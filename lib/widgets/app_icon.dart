@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:food_delivery_flutter/utils/dimensions.dart';
+import 'package:flutter/material.dart';
 
 class AppIcon extends StatelessWidget {
   final IconData icon;
@@ -9,13 +6,14 @@ class AppIcon extends StatelessWidget {
   final Color iconColor;
   final double size;
   final double iconSize;
-  AppIcon(
-      {Key? key,
-      required this.icon,
-      this.backgroundColor = const Color(0xFFfcf4e4),
-      this.iconColor = const Color(0xFF756d54),
-      this.size = 40, this.iconSize = 16})
-      : super(key: key);
+  const AppIcon({
+    Key? key,
+    required this.icon,
+    this.iconColor = const Color(0xff756d54),
+    this.backgroundColor = const Color(0x96fcf4e4),
+    this.size = 40,
+    this.iconSize = 25,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +21,9 @@ class AppIcon extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(size / 2),
-          color: backgroundColor),
+        borderRadius: BorderRadius.circular(size / 2),
+        color: backgroundColor,
+      ),
       child: Icon(
         icon,
         color: iconColor,
