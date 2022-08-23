@@ -4,9 +4,10 @@ const String ipsumText =
 class AppConstants {
   static const String appName = 'DBFood';
   static const int appVersion = 1;
-  static const String baseUrl = 'https://jsonplaceholder.typicode.com';
-  static const String popularProductUri = '/users';
-  static const String recommendedProductUri = '/users';
+  static const String baseUrl =
+      'https://coralavital.github.io/Food_Delivery_App-Flutter';
+  static const String popularProductUri = '/api/cameras.json';
+  static const String recommendedProductUri = '/api/cameras.json';
   static const String token = 'DBtoken';
   static const String uploadUrl = '/uploads/';
   static const String cartList = 'cart-list';

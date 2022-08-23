@@ -52,28 +52,14 @@
             "type_id": 2
         },
         {
-            "id": 10,
-            "name": "Chicken biriani",
-            "description": "Chicken Biryani Served in a Bowl Close Up Photo. Indian Food, Indian Style Rice and Chicken. #Biryani #ChickenBiryani #IndianFood #StockPhoto",
-            "price": 12,
-            "stars": 4,
-            "img": "images/9447a79793a4b7f832d981f975c0abc4.jpeg",
-            "location": "china",
-            "created_at": "2021-12-27 06:29:47",
-            "updated_at": "2022-01-01 08:56:33",
-            "type_id": 2
+            "id": 1,
+            "name": "Camera no. 1",
+            "img": "../images/download.jpg",
         },
         {
-            "id": 11,
-            "name": "Hilsha fish",
-            "description": "Ilish Mach aka Hilsa fish is in the season and needless to say, I cooked it a few times this year as well. This year, however, I have used Ilish mach to make simple delicacies mostly. Ilish Beguner Jhol is probably the simplest of the lot, well, after Ilish Mach Bhaja.Ilish Mach aka Hilsa fish is in the season and needless to say, I cooked it a few times this year as well. This year, however, I have used Ilish mach to make simple delicacies mostly. Ilish Beguner Jhol is probably the simplest of the lot, well, after Ilish Mach Bhaja.Ilish Mach aka Hilsa fish is in the season and needless to say, I cooked it a few times this year as well. This year, however, I have used Ilish mach to make simple delicacies mostly. Ilish Beguner Jhol is probably the simplest of the lot, well, after Ilish Mach Bhaja.",
-            "price": 12,
-            "stars": 5,
-            "img": "images/1343ce6cf6792383dfc071727afd5c46.jpeg",
-            "location": "china",
-            "created_at": "2021-12-27 06:35:34",
-            "updated_at": "2022-01-01 08:56:22",
-            "type_id": 2
+            "id": 2,
+            "name": "Camera no. 2",
+            "img": "../images/download.jpg",
         }
     ]
 }
