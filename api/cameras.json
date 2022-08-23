@@ -54,12 +54,12 @@
         {
             "id": 1,
             "name": "Camera no. 1",
-            "img": "../images/download.jpg",
+            "img": "../images/download.jpg"
         },
         {
             "id": 2,
             "name": "Camera no. 2",
-            "img": "../images/download.jpg",
+            "img": "../images/download.jpg"
         }
     ]
 }
