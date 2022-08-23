@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_delivery_flutter/utils/colors.dart';
-import 'package:food_delivery_flutter/utils/dimensions.dart';
 import 'package:food_delivery_flutter/widgets/big_text.dart';
-import 'package:food_delivery_flutter/widgets/small_text.dart';
-
 import 'food_page_body.dart';
 
 class MainFoodPage extends StatefulWidget {
@@ -32,26 +29,20 @@ class _MainFoodPageState extends State<MainFoodPage> {
                 children: [
                   Column(
                     children: [
-                      BigText(text: 'Bangladesh', color: AppColors.mainColor),
-                      Row(
-                        children: [
-                          SmallText(text: 'Narsinqdi', color: Colors.black54),
-                          Icon(Icons.arrow_drop_down)
-                        ],
-                      ),
+                      BigText(text: 'FridgeIT', color: AppColors.mainColor),
                     ],
                   ),
-                  Center(
-                    child: Container(
-                      width: Dimensions.size45,
-                      height: Dimensions.size45,
-                      child: Icon(Icons.search, color: Colors.white),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: AppColors.mainColor,
-                      ),
-                    ),
-                  ),
+                  //Center(
+                  //  child: Container(
+                  //    width: Dimensions.size45,
+                  //    height: Dimensions.size45,
+                  //    child: Icon(Icons.search, color: Colors.white),
+                  //    decoration: BoxDecoration(
+                  //      borderRadius: BorderRadius.circular(15),
+                  //      color: AppColors.mainColor,
+                  //    ),
+                  //  ),
+                  //),
                 ],
               ),
             ),
