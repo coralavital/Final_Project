@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/pages/cart/cart_history.dart';
+import 'package:food_delivery_flutter/pages/cart/cart_page.dart';
 import 'package:food_delivery_flutter/pages/home/main_food_page.dart';
 import 'package:food_delivery_flutter/utils/colors.dart';
 
@@ -15,9 +15,8 @@ class _HomePageState extends State<HomePage> {
 
   List pages = [
     MainFoodPage(),
-    Container(child: Center(child: Text('Next page'))),
-    CartHistory(),
-    Container(child: Center(child: Text('Next next next page'))),
+    CartPage(),
+    CartPage(),
   ];
 
   void onTapNav(int index) {
@@ -29,9 +28,9 @@ class _HomePageState extends State<HomePage> {
   List<Widget> _buildScreens() {
     return [
       MainFoodPage(),
-      Container(child: Center(child: Text('Next page'))),
-      Container(child: Center(child: Text('Next next page'))),
-      Container(child: Center(child: Text('Next next next page'))),
+      //Container(child: Center(child: Text('Next page'))),
+      //Container(child: Center(child: Text('Next next page'))),
+      //Container(child: Center(child: Text('Next next next page'))),
     ];
   }
 
@@ -49,9 +48,9 @@ class _HomePageState extends State<HomePage> {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle_rounded), label: 'account'),
+              icon: Icon(Icons.list_alt_rounded), label: 'list'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart), label: 'shoppingCart'),
+              icon: Icon(Icons.shopping_bag_rounded), label: 'shoppingList'),
         ],
       ),
     );

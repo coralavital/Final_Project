@@ -1,15 +1,11 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/controllers/popular_product_controller.dart';
-import 'package:food_delivery_flutter/controllers/recommended_product_controller.dart';
 import 'package:food_delivery_flutter/routes/route_helper.dart';
 import 'package:food_delivery_flutter/utils/colors.dart';
 import 'package:food_delivery_flutter/utils/constants.dart';
 import 'package:food_delivery_flutter/utils/dimensions.dart';
 import 'package:food_delivery_flutter/widgets/app_column.dart';
-import 'package:food_delivery_flutter/widgets/big_text.dart';
-import 'package:food_delivery_flutter/widgets/icon_and_text_widget.dart';
-import 'package:food_delivery_flutter/widgets/small_text.dart';
 import 'package:get/get.dart';
 import '../../models/products_model.dart';
 
@@ -248,7 +244,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             alignment: Alignment.bottomCenter,
             child: Container(
               // title height
-              height: 100,
+              height: 50,
               margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.size20),
@@ -265,7 +261,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               child: Container(
                 padding: EdgeInsets.only(top: 5, left: 15, right: 15),
                 // the title of the white screen
-                child: AppColumn(text: popularProduct.name!),
+                child: AppColumn(text: "Camera"),
               ),
             ),
           ),

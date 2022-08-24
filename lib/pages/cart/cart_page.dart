@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/base/no_data_page.dart';
 import 'package:food_delivery_flutter/controllers/cart_controller.dart';
 import 'package:food_delivery_flutter/controllers/popular_product_controller.dart';
-import 'package:food_delivery_flutter/pages/home/main_food_page.dart';
 import 'package:food_delivery_flutter/routes/route_helper.dart';
 import 'package:food_delivery_flutter/utils/colors.dart';
 import 'package:food_delivery_flutter/utils/constants.dart';
@@ -11,7 +10,6 @@ import 'package:food_delivery_flutter/widgets/app_icon.dart';
 import 'package:food_delivery_flutter/widgets/big_text.dart';
 import 'package:food_delivery_flutter/widgets/small_text.dart';
 import 'package:get/get.dart';
-
 import '../../controllers/recommended_product_controller.dart';
 
 class CartPage extends StatelessWidget {
@@ -46,12 +44,6 @@ class CartPage extends StatelessWidget {
                       backgroundColor: AppColors.mainColor,
                       iconSize: Dimensions.size25,
                     ),
-                  ),
-                  AppIcon(
-                    icon: Icons.shopping_cart,
-                    iconColor: Colors.white,
-                    backgroundColor: AppColors.mainColor,
-                    iconSize: Dimensions.size25,
                   ),
                 ],
               )),
@@ -271,7 +263,6 @@ class CartPage extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           //popularProduct.addItem
-                          print('tapped');
                           cartController.addToHistory();
                         },
                         child: Container(

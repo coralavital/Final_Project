@@ -1,7 +1,6 @@
-import 'package:food_delivery_flutter/data/repository/cart_repo.dart';
 import 'package:food_delivery_flutter/models/products_model.dart';
 import 'package:get/get.dart';
-
+import '../data/repository/cart_repo.dart';
 import '../models/cart_model.dart';
 
 class CartController extends GetxController {
@@ -54,7 +53,7 @@ class CartController extends GetxController {
     update();
   }
 
-  bool existInCart(ProductModel product) {
+  bool existInCartList(ProductModel product) {
     if (_items.containsKey(product.id)) {
       return true;
     } else {
@@ -100,7 +99,7 @@ class CartController extends GetxController {
     return storageItems;
   }
 
-  set setCart(List<CartModel> items) {
+  set setList(List<CartModel> items) {
     storageItems = items;
     for (int i = 0; i < storageItems.length; i++) {
       _items.putIfAbsent(storageItems[i].product!.id!, () => storageItems[i]);

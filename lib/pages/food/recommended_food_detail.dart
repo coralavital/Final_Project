@@ -200,7 +200,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                           color: AppColors.mainColor,
                         ),
                         child: BigText(
-                          text: '\$ ${product.price} | Add to Cart',
+                          text: 'Add to Cart',
                           color: Colors.white,
                         ),
                       ),
