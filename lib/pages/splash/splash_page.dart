@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen>
       curve: Curves.linear,
     );
     Timer(
-      Duration(seconds: 3),
+      Duration(seconds: 5),
       () => Get.offNamed(
         RouteHelper.getInitial(),
       ),
@@ -52,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen>
             child: Center(
               child: Image.asset(
                 'assets/image/Icon-FridgeIT.png',
-                width: Dimensions.size25 * 6,
+                width: Dimensions.size30 * 6,
               ),
             ),
           ),

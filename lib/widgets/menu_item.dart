@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/pages/cart/cart_page.dart';
-import 'package:get/get.dart';
-import '../routes/route_helper.dart';
 
 class NavbarMenuItem {
   final String text;
@@ -44,7 +41,7 @@ class NavbarMenuItems {
         Navigator.of(context).pushNamed('/settings');
         break;
       case NavbarMenuItems.logout:
-        Navigator.of(context).pushNamed('/popular-food');
+        Navigator.of(context).pushNamed('/cameras');
         break;
     }
   }

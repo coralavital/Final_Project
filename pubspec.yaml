@@ -41,6 +41,7 @@ dependencies:
   shared_preferences: ^2.0.15
   intl: ^0.17.0
   dropdown_button2: ^1.7.2
+  animate_icons: ^2.0.0
 
 dev_dependencies:
   flutter_test:

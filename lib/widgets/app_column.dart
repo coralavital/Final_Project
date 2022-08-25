@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../utils/colors.dart';
 import '../utils/dimensions.dart';
 import 'big_text.dart';
-import 'icon_and_text_widget.dart';
-import 'small_text.dart';
 
 class AppColumn extends StatelessWidget {
   final String text;

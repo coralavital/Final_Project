@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/controllers/cart_controller.dart';
 import 'package:food_delivery_flutter/controllers/popular_product_controller.dart';
 import 'package:food_delivery_flutter/helper/dependencies.dart' as dep;
-import 'package:food_delivery_flutter/routes/route_helper.dart';
+import 'package:food_delivery_flutter/widgets/animation_state.dart';
 import 'package:get/get.dart';
 
 Future<void> main() async {
@@ -23,8 +23,11 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.teal,
         ),
-        initialRoute: RouteHelper.getSplash(),
-        getPages: RouteHelper.routes,
+        //initialRoute: RouteHelper.getSplash(),
+        //getPages: RouteHelper.routes,
+        //home: AnimationIcon(
+        //  icon: Icon(Icons.settings),
+        //),
       );
     });
   }

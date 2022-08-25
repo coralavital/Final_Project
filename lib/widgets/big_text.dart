@@ -4,10 +4,12 @@ import 'package:food_delivery_flutter/utils/dimensions.dart';
 class BigText extends StatelessWidget {
   final Color? color;
   final String text;
+  final FontWeight fontWeight;
   double size;
   TextOverflow overflow;
   BigText({
     Key? key,
+    this.fontWeight = FontWeight.w500,
     this.color = const Color(0xFF332d2b),
     required this.text,
     this.overflow = TextOverflow.ellipsis,
@@ -22,7 +24,8 @@ class BigText extends StatelessWidget {
       overflow: overflow,
       style: TextStyle(
         color: color,
-        fontWeight: FontWeight.w500,
+        fontWeight:
+            fontWeight == 0 ? FontWeight.w500 : fontWeight,
         fontFamily: 'Roboto',
         fontSize: size == 0 ? Dimensions.size20 : size,
       ),

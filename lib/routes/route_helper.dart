@@ -7,15 +7,13 @@ import 'package:get/get.dart';
 class RouteHelper {
   static const String splash = '/splash-page';
   static const String initial = '/';
-  static const String popularFood = '/popular-food';
+  static const String cameras = '/cameras';
   static const String settings = '/settings';
   static const String cartPage = '/cart-page';
 
   static String getSplash() => '$splash';
   static String getInitial() => '$initial';
-  static String getPopularFood(int pageId, String page) =>
-      '$popularFood?pageId=$pageId&page=$page';
-  static String getSettings(int pageId) => '$settings?pageId=$pageId';
+  static String getSettings() => '$settings';
   static String getCartPage() => '$cartPage';
 
   static List<GetPage> routes = [
@@ -24,9 +22,7 @@ class RouteHelper {
     GetPage(
       name: settings,
       page: () {
-        var pageId = Get.parameters['pageId'];
-        var page = Get.parameters['page'];
-        return Settings(pageId: int.parse(pageId!), page: page!);
+        return Settings();
       },
       transition: Transition.fadeIn,
     ),
