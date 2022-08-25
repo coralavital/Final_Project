@@ -1,12 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/routes/route_helper.dart';
 import 'package:food_delivery_flutter/utils/dimensions.dart';
 import 'package:get/get.dart';
-
 import '../../controllers/popular_product_controller.dart';
-import '../../controllers/recommended_product_controller.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -21,12 +18,10 @@ class _SplashScreenState extends State<SplashScreen>
   late AnimationController controller;
   Future<void> _loadResource() async {
     await Get.find<PopularProductController>().getPopularProductList();
-    await Get.find<RecommendedProductController>().getRecommendedProductList();
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller = AnimationController(
       vsync: this,
@@ -56,15 +51,9 @@ class _SplashScreenState extends State<SplashScreen>
             scale: animation,
             child: Center(
               child: Image.asset(
-                'assets/image/logo part 1.png',
-                width: Dimensions.size25 * 4,
+                'assets/image/Icon-FridgeIT.png',
+                width: Dimensions.size25 * 6,
               ),
-            ),
-          ),
-          Center(
-            child: Image.asset(
-              'assets/image/logo part 2.png',
-              width: Dimensions.size25 * 4,
             ),
           ),
         ],

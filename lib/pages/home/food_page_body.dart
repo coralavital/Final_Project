@@ -1,13 +1,13 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/controllers/popular_product_controller.dart';
-import 'package:food_delivery_flutter/routes/route_helper.dart';
 import 'package:food_delivery_flutter/utils/colors.dart';
 import 'package:food_delivery_flutter/utils/constants.dart';
 import 'package:food_delivery_flutter/utils/dimensions.dart';
 import 'package:food_delivery_flutter/widgets/app_column.dart';
 import 'package:get/get.dart';
 import '../../models/products_model.dart';
+import '../../routes/route_helper.dart';
 
 class FoodPageBody extends StatefulWidget {
   const FoodPageBody({Key? key}) : super(key: key);
@@ -220,11 +220,11 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       child: Stack(
         children: [
           GestureDetector(
-            onTap: () {
-              Get.toNamed(
-                RouteHelper.getPopularFood(index, 'home'),
-              );
-            },
+            //onTap: () {
+            //  Get.toNamed(
+            //    RouteHelper.getPopularFood(index, 'home'),
+            //  );
+            //},
             child: Container(
               // image height
               height: 1000,

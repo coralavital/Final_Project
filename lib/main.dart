@@ -4,8 +4,6 @@ import 'package:food_delivery_flutter/controllers/popular_product_controller.dar
 import 'package:food_delivery_flutter/helper/dependencies.dart' as dep;
 import 'package:food_delivery_flutter/routes/route_helper.dart';
 import 'package:get/get.dart';
-import 'controllers/recommended_product_controller.dart';
-
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,17 +17,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.find<CartController>().getCardData();
     return GetBuilder<PopularProductController>(builder: (_) {
-      return GetBuilder<RecommendedProductController>(builder: (_) {
-        return GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            primarySwatch: Colors.teal,
-          ),
-          initialRoute: RouteHelper.getSplash(),
-          getPages: RouteHelper.routes,
-        );
-      });
+      return GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.teal,
+        ),
+        initialRoute: RouteHelper.getSplash(),
+        getPages: RouteHelper.routes,
+      );
     });
   }
 }

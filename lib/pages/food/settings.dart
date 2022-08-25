@@ -12,10 +12,10 @@ import 'package:get/get.dart';
 import '../../utils/colors.dart';
 import '../../widgets/big_text.dart';
 
-class PopularFoodDetail extends StatelessWidget {
+class Settings extends StatelessWidget {
   final int pageId;
   final String page;
-  const PopularFoodDetail({
+  const Settings({
     Key? key,
     required this.pageId,
     required this.page,
@@ -75,7 +75,7 @@ class PopularFoodDetail extends StatelessWidget {
                     },
                     child: Stack(
                       children: [
-                        AppIcon(icon: Icons.shopping_cart_outlined),
+                        //AppIcon(icon: Icons.shopping_cart_outlined),
                         controller.totalItems >= 1
                             ? Positioned(
                                 right: 0,

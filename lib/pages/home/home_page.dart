@@ -13,11 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  List pages = [
-    MainFoodPage(),
-    CartPage(),
-    CartPage(),
-  ];
+  List pages = [MainFoodPage(), CartPage(), CartPage()];
 
   void onTapNav(int index) {
     setState(() {
@@ -26,12 +22,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   List<Widget> _buildScreens() {
-    return [
-      MainFoodPage(),
-      //Container(child: Center(child: Text('Next page'))),
-      //Container(child: Center(child: Text('Next next page'))),
-      //Container(child: Center(child: Text('Next next next page'))),
-    ];
+    return [MainFoodPage()];
   }
 
   @override
@@ -48,9 +39,9 @@ class _HomePageState extends State<HomePage> {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.list_alt_rounded), label: 'list'),
-          BottomNavigationBarItem(
               icon: Icon(Icons.shopping_bag_rounded), label: 'shoppingList'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.list_alt_rounded), label: 'list'),
         ],
       ),
     );
