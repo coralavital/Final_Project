@@ -12,10 +12,10 @@ class TopNavbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-        left: Dimensions.size20,
+    return Container(
+        margin: EdgeInsets.only(left: Dimensions.size20,
         right: Dimensions.size20,
-        top: 35,
+        top: Dimensions.size40, ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -27,10 +27,10 @@ class TopNavbar extends StatelessWidget {
             Column(
               children: [
                 DropdownButton2(
-                  customButton: const Icon(
-                    Icons.list_sharp,
-                    size: 46,
-                    color: Colors.teal,
+                  customButton: Icon(
+                    Icons.account_circle_rounded,
+                    size: Dimensions.size30,
+                    color: AppColors.mainColor
                   ),
                   customItemsIndexes: const [3],
                   customItemsHeight: 8,
@@ -53,16 +53,16 @@ class TopNavbar extends StatelessWidget {
                   onChanged: (value) {
                     NavbarMenuItems.onChanged(context, value as NavbarMenuItem);
                   },
-                  itemHeight: 25,
-                  itemPadding: const EdgeInsets.only(left: 16, right: 16),
-                  dropdownWidth: 120,
-                  dropdownPadding: const EdgeInsets.symmetric(vertical: 6),
+                  itemHeight: Dimensions.size20,
+                  itemPadding: EdgeInsets.only(left: Dimensions.size15, right: Dimensions.size15),
+                  dropdownWidth: Dimensions.size120,
+                  dropdownPadding: const EdgeInsets.symmetric(vertical: 8),
                   dropdownDecoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4),
-                    color: Colors.teal,
+                    color: AppColors.mainColor,
                   ),
                   dropdownElevation: 8,
-                  offset: const Offset(0, 8),
+                  offset: const Offset(2, 8),
                 ),
               ],
             ),

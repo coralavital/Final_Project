@@ -4,10 +4,8 @@ import 'package:food_delivery_flutter/controllers/popular_product_controller.dar
 import 'package:food_delivery_flutter/utils/colors.dart';
 import 'package:food_delivery_flutter/utils/constants.dart';
 import 'package:food_delivery_flutter/utils/dimensions.dart';
-import 'package:food_delivery_flutter/widgets/app_column.dart';
 import 'package:get/get.dart';
 import '../../models/products_model.dart';
-import '../../routes/route_helper.dart';
 
 class FoodPageBody extends StatefulWidget {
   const FoodPageBody({Key? key}) : super(key: key);
@@ -44,7 +42,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         GetBuilder<PopularProductController>(builder: (popularProducts) {
           return popularProducts.isLoaded
               ? Container(
-                  height: 600,
+                  height: Dimensions.size550,
                   child: PageView.builder(
                       controller: pageController,
                       itemCount: 2,
@@ -220,15 +218,13 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       child: Stack(
         children: [
           GestureDetector(
-            //onTap: () {
-            //  Get.toNamed(
-            //    RouteHelper.getPopularFood(index, 'home'),
-            //  );
-            //},
             child: Container(
               // image height
-              height: 1000,
-              margin: EdgeInsets.only(left: 10, right: 10),
+              height: Dimensions.size550,
+              margin: EdgeInsets.only(
+                  left: Dimensions.size10,
+                  right: Dimensions.size10,
+                  top: Dimensions.size10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: index.isEven ? Color(0xff69c5df) : Color(0xFF9294cc),
@@ -240,29 +236,30 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              // title height
-              height: 50,
-              margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimensions.size20),
-                  color: Colors.white,
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Color(0xffe8e8e8),
-                      blurRadius: 5.0,
-                      offset: Offset(0, 5),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: Dimensions.size10,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: Dimensions.size50,
+                  height: Dimensions.size50,
+                  child: FloatingActionButton(
+                    backgroundColor: AppColors.mainColor,
+                    foregroundColor: Colors.white,
+                    heroTag: Text('btn4'),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/cameras');
+                    },
+                    child: Icon(
+                      Icons.add,
+                      size: Dimensions.size30,
                     ),
-                    BoxShadow(color: Colors.white, offset: Offset(-5, 0)),
-                    BoxShadow(color: Colors.white, offset: Offset(5, 0)),
-                  ]),
-              child: Container(
-                padding: EdgeInsets.only(top: 5, left: 15, right: 15),
-                // the title of the white screen
-                child: AppColumn(text: "Camera"),
-              ),
+                  ),
+                )
+              ],
             ),
           ),
         ],

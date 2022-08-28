@@ -11,11 +11,11 @@ class NavbarMenuItem {
 }
 
 class NavbarMenuItems {
-  static const List<NavbarMenuItem> firstItems = [settings];
+  static const List<NavbarMenuItem> firstItems = [account];
   static const List<NavbarMenuItem> secondItems = [logout];
 
-  static const settings =
-      NavbarMenuItem(text: 'Settings', icon: Icons.settings);
+  static const account =
+      NavbarMenuItem(text: 'Account', icon: Icons.account_circle_rounded);
   static const logout = NavbarMenuItem(text: 'Log Out', icon: Icons.logout);
 
   static Widget buildItem(NavbarMenuItem item) {
@@ -37,8 +37,8 @@ class NavbarMenuItems {
 
   static onChanged(BuildContext context, NavbarMenuItem item) {
     switch (item) {
-      case NavbarMenuItems.settings:
-        Navigator.of(context).pushNamed('/settings');
+      case NavbarMenuItems.account:
+        Navigator.of(context).pushNamed('/account');
         break;
       case NavbarMenuItems.logout:
         Navigator.of(context).pushNamed('/cameras');

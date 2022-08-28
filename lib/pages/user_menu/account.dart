@@ -1,13 +1,11 @@
-import 'package:animate_icons/animate_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/utils/colors.dart';
 import 'package:food_delivery_flutter/utils/dimensions.dart';
-import 'package:food_delivery_flutter/widgets/animation_state.dart';
 import 'package:food_delivery_flutter/widgets/big_text.dart';
 import 'package:food_delivery_flutter/widgets/top_navbar.dart';
 
-class Settings extends StatelessWidget {
-  const Settings({
+class Account extends StatelessWidget {
+  const Account({
     Key? key,
   }) : super(key: key);
 
@@ -22,7 +20,7 @@ class Settings extends StatelessWidget {
           Positioned(
             left: 0,
             right: 0,
-            top: 90,
+            top: Dimensions.size80,
             bottom: 0,
             child: Container(
               padding: EdgeInsets.symmetric(
@@ -39,12 +37,11 @@ class Settings extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   BigText(
-                    text: "Settings",
+                    text: "My Account",
                     size: Dimensions.size30,
                     color: AppColors.mainColor,
                     fontWeight: FontWeight.w900,
                   ),
-                  //AnimationIcon()
                 ],
               ),
             ),
@@ -52,10 +49,10 @@ class Settings extends StatelessWidget {
           Positioned(
             left: Dimensions.size10,
             right: Dimensions.size10,
-            top: Dimensions.size210,
+            top: Dimensions.size150,
             child: Container(
               width: Dimensions.size50,
-              height: Dimensions.size300,
+              height: Dimensions.size450,
               decoration: BoxDecoration(
                 color: AppColors.iconColor1,
                 borderRadius: BorderRadius.only(
@@ -70,6 +67,7 @@ class Settings extends StatelessWidget {
                 children: [
                   Container(
                     child: FloatingActionButton.extended(
+                      heroTag: Text('btn1'),
                       backgroundColor: AppColors.mainColor,
                       foregroundColor: Colors.white,
                       onPressed: () {},
@@ -86,6 +84,7 @@ class Settings extends StatelessWidget {
                   ),
                   Container(
                     child: FloatingActionButton.extended(
+                      heroTag: Text('btn2'),
                       backgroundColor: AppColors.mainColor,
                       foregroundColor: Colors.white,
                       onPressed: () {},
@@ -116,17 +115,18 @@ class Settings extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    width: Dimensions.size60,
-                    height: Dimensions.size60,
+                    width: Dimensions.size50,
+                    height: Dimensions.size50,
                     child: FloatingActionButton(
                       backgroundColor: AppColors.mainColor,
                       foregroundColor: Colors.white,
+                      heroTag: Text('btn3'),
                       onPressed: () {
                         Navigator.of(context).pushNamed('/cameras');
                       },
                       child: Icon(
                         Icons.home,
-                        size: Dimensions.size45,
+                        size: Dimensions.size30,
                       ),
                     ),
                   )

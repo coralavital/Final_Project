@@ -8,8 +8,8 @@ import 'package:food_delivery_flutter/widgets/big_text.dart';
 import 'package:get/get.dart';
 import '../../widgets/top_navbar.dart';
 
-class CartPage extends StatelessWidget {
-  const CartPage({Key? key}) : super(key: key);
+class ListPage extends StatelessWidget {
+  const ListPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
