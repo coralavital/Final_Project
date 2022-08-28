@@ -3,6 +3,7 @@ import 'package:food_delivery_flutter/utils/colors.dart';
 import 'package:food_delivery_flutter/utils/dimensions.dart';
 import 'package:food_delivery_flutter/widgets/big_text.dart';
 import 'package:food_delivery_flutter/widgets/top_navbar.dart';
+import 'package:animate_icons/animate_icons.dart';
 
 class Account extends StatelessWidget {
   const Account({
@@ -42,6 +43,20 @@ class Account extends StatelessWidget {
                     color: AppColors.mainColor,
                     fontWeight: FontWeight.w900,
                   ),
+                  AnimateIcons(
+                    startIcon: Icons.settings,
+                    endIcon: Icons.settings,
+                    size: 60.0,
+                    onStartIconPress: () {
+                      return true;
+                    },
+                    onEndIconPress: () {
+                      return true;
+                    },
+                    duration: Duration(milliseconds: 500),
+                    clockwise: false,
+                    controller: AnimateIconController(),
+                  ),
                 ],
               ),
             ),
@@ -49,10 +64,10 @@ class Account extends StatelessWidget {
           Positioned(
             left: Dimensions.size10,
             right: Dimensions.size10,
-            top: Dimensions.size150,
+            top: Dimensions.size200,
             child: Container(
               width: Dimensions.size50,
-              height: Dimensions.size450,
+              height: Dimensions.size300,
               decoration: BoxDecoration(
                 color: AppColors.iconColor1,
                 borderRadius: BorderRadius.only(
