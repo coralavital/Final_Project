@@ -1,9 +1,11 @@
+// imports
 import 'package:food_delivery_flutter/pages/lists/list_page.dart';
 import 'package:food_delivery_flutter/pages/user_menu/account.dart';
 import 'package:food_delivery_flutter/pages/home/home_page.dart';
 import 'package:food_delivery_flutter/pages/splash/splash_page.dart';
 import 'package:get/get.dart';
 
+// RouteHelper class
 class RouteHelper {
   static const String splash = '/splash-page';
   static const String initial = '/';

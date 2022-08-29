@@ -1,9 +1,11 @@
+// imports
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/pages/lists/list_page.dart';
 import 'package:food_delivery_flutter/pages/home/main_page.dart';
 import 'package:food_delivery_flutter/utils/colors.dart';
 import '../../utils/dimensions.dart';
 
+// HomePage class
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 

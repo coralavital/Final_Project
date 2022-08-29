@@ -1,7 +1,9 @@
+// imports
 import 'package:flutter/material.dart';
 import '../utils/dimensions.dart';
 import 'big_text.dart';
 
+// AppColumn class
 class AppColumn extends StatelessWidget {
   final String text;
   const AppColumn({Key? key, required this.text}) : super(key: key);

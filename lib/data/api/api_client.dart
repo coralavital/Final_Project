@@ -1,6 +1,8 @@
+// imports
 import 'package:food_delivery_flutter/utils/constants.dart';
 import 'package:get/get.dart';
 
+// ApiClient class
 class ApiClient extends GetConnect implements GetxService {
   late String token;
   final String appBaseUrl;

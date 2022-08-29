@@ -1,10 +1,12 @@
+// imports
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/routes/route_helper.dart';
 import 'package:food_delivery_flutter/utils/dimensions.dart';
 import 'package:get/get.dart';
-import '../../controllers/popular_product_controller.dart';
+import '../../controllers/product_controller.dart';
 
+// SplashScreen class
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 

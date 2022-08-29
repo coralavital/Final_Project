@@ -1,6 +1,8 @@
+// imports
 import 'package:food_delivery_flutter/models/products_model.dart';
 
-class CartModel {
+// ListModel class
+class ListModel {
   int? id;
   String? name;
   int? price;
@@ -10,7 +12,7 @@ class CartModel {
   String? time;
   ProductModel? product;
 
-  CartModel({
+  ListModel({
     this.id,
     this.name,
     this.price,
@@ -21,7 +23,7 @@ class CartModel {
     this.product,
   });
 
-  CartModel.fromJson(Map<String, dynamic> json) {
+  ListModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     price = json['price'];

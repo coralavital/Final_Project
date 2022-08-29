@@ -1,5 +1,7 @@
+// imports
 import 'package:flutter/material.dart';
 
+// NavbarMenuItem class
 class NavbarMenuItem {
   final String text;
   final IconData icon;

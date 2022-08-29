@@ -1,12 +1,15 @@
+// imports
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/controllers/popular_product_controller.dart';
+import 'package:food_delivery_flutter/controllers/product_controller.dart';
 import 'package:food_delivery_flutter/utils/colors.dart';
 import 'package:food_delivery_flutter/utils/constants.dart';
 import 'package:food_delivery_flutter/utils/dimensions.dart';
 import 'package:get/get.dart';
 import '../../models/products_model.dart';
+import '../../widgets/small_text.dart';
 
+// FoodPageBody class
 class FoodPageBody extends StatefulWidget {
   const FoodPageBody({Key? key}) : super(key: key);
 
@@ -68,122 +71,6 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             ),
           );
         }),
-        //SizedBox(height: Dimensions.size30),
-        //Container(
-        //  margin: EdgeInsets.only(left: Dimensions.size30),
-        //  child: Row(
-        //    crossAxisAlignment: CrossAxisAlignment.end,
-        //    children: [
-        //      BigText(text: 'Recommended'),
-        //      SizedBox(width: Dimensions.size10),
-        //      Container(
-        //        margin: EdgeInsets.only(bottom: 3),
-        //        child: BigText(text: '.', color: Colors.black26),
-        //      ),
-        //      SizedBox(width: Dimensions.size10),
-        //      Container(
-        //        margin: EdgeInsets.only(bottom: 2),
-        //        child: SmallText(text: 'Food pairing'),
-        //      )
-        //    ],
-        //  ),
-        //),
-        ////Recommended food*****************************
-        //GetBuilder<RecommendedProductController>(builder: (recommendedProduct) {
-        //  return recommendedProduct.isLoaded
-        //      ? ListView.builder(
-        //          physics: NeverScrollableScrollPhysics(),
-        //          shrinkWrap: true,
-        //          itemCount: recommendedProduct.recommendedProductList.length,
-        //          itemBuilder: (context, index) {
-        //            return GestureDetector(
-        //              onTap: () {
-        //                Get.toNamed(RouteHelper.getRecommendedFood(index));
-        //              },
-        //              child: Container(
-        //                margin: EdgeInsets.symmetric(
-        //                  horizontal: Dimensions.size5,
-        //                  vertical: Dimensions.size5,
-        //                ),
-        //                child: Row(
-        //                  children: [
-        //                    //image section**************
-        //                    Container(
-        //                      width: Dimensions.size120,
-        //                      height: Dimensions.size120,
-        //                      decoration: BoxDecoration(
-        //                        borderRadius:
-        //                            BorderRadius.circular(Dimensions.size20),
-        //                        color: Colors.white38,
-        //                        image: DecorationImage(
-        //                            fit: BoxFit.cover,
-        //                            image: NetworkImage(AppConstants.baseUrl +
-        //                                '/uploads/' +
-        //                                recommendedProduct
-        //                                    .recommendedProductList[index]
-        //                                    .img!)),
-        //                      ),
-        //                    ),
-        //                    Expanded(
-        //                      child: Container(
-        //                        height: Dimensions.size100,
-        //                        decoration: BoxDecoration(
-        //                          borderRadius: BorderRadius.only(
-        //                            topRight:
-        //                                Radius.circular(Dimensions.size20),
-        //                            bottomRight:
-        //                                Radius.circular(Dimensions.size20),
-        //                          ),
-        //                          color: Colors.white,
-        //                        ),
-        //                        child: Padding(
-        //                          padding:
-        //                              EdgeInsets.only(left: Dimensions.size10),
-        //                          child: Column(
-        //                            crossAxisAlignment:
-        //                                CrossAxisAlignment.start,
-        //                            mainAxisAlignment:
-        //                                MainAxisAlignment.spaceBetween,
-        //                            children: [
-        //                              BigText(
-        //                                  text: recommendedProduct
-        //                                      .recommendedProductList[index]
-        //                                      .name!),
-        //                              SmallText(
-        //                                  text:
-        //                                      'With Chinese characteristics.'),
-        //                              Row(
-        //                                mainAxisAlignment:
-        //                                    MainAxisAlignment.spaceBetween,
-        //                                children: [
-        //                                  IconAndTextWidget(
-        //                                      icon: Icons.circle_sharp,
-        //                                      text: 'Normal',
-        //                                      iconColor: AppColors.iconColor1),
-        //                                  IconAndTextWidget(
-        //                                      icon: Icons.location_on,
-        //                                      text: '1.7 km',
-        //                                      iconColor: AppColors.mainColor),
-        //                                  IconAndTextWidget(
-        //                                      icon: Icons.access_time_rounded,
-        //                                      text: '32 min',
-        //                                      iconColor: AppColors.iconColor2),
-        //                                ],
-        //                              ),
-        //                            ],
-        //                          ),
-        //                        ),
-        //                      ),
-        //                    ),
-        //                  ],
-        //                ),
-        //              ),
-        //            );
-        //          })
-        //      : CircularProgressIndicator(
-        //          color: AppColors.mainColor,
-        //        );
-        //})
       ],
     );
   }
@@ -250,9 +137,70 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     backgroundColor: AppColors.mainColor,
                     foregroundColor: Colors.white,
                     heroTag: Text('btn4'),
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/cameras');
-                    },
+                    // the user will selected witch product he wants to add to the list
+                    onPressed: () => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                        title: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Choose Product\n',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.mainColor,
+                                      fontSize: Dimensions.size20),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Does the product you want to\nadd have an expiration date?',
+                                  style: TextStyle(                                      
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.mainColor,
+                                      fontSize: Dimensions.size15),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                        actions: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, 'No'),
+                                child: SmallText(
+                                  text: 'No',
+                                  color: AppColors.mainColor,
+                                  size: Dimensions.size15,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(context, 'Yes'),
+                                  child: SmallText(
+                                    text: 'Yes',
+                                    color: AppColors.mainColor,
+                                    size: Dimensions.size15,
+                                    fontWeight: FontWeight.w500,
+                                  )),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+
                     child: Icon(
                       Icons.add,
                       size: Dimensions.size30,

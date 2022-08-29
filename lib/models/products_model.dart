@@ -1,3 +1,4 @@
+// Product class
 class Product {
   int? _totalSize;
   int? _typeId;

@@ -1,5 +1,7 @@
+// imports
 import 'package:flutter/material.dart';
 
+// AppIcon class
 class AppIcon extends StatelessWidget {
   final IconData icon;
   final Color backgroundColor;

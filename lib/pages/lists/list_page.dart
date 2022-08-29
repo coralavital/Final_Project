@@ -1,6 +1,7 @@
+// imports
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/base/no_data_page.dart';
-import 'package:food_delivery_flutter/controllers/cart_controller.dart';
+import 'package:food_delivery_flutter/controllers/list_controller.dart';
 import 'package:food_delivery_flutter/utils/colors.dart';
 import 'package:food_delivery_flutter/utils/constants.dart';
 import 'package:food_delivery_flutter/utils/dimensions.dart';
@@ -8,6 +9,7 @@ import 'package:food_delivery_flutter/widgets/big_text.dart';
 import 'package:get/get.dart';
 import '../../widgets/top_navbar.dart';
 
+// ListPage class
 class ListPage extends StatelessWidget {
   const ListPage({Key? key}) : super(key: key);
   @override
@@ -16,7 +18,7 @@ class ListPage extends StatelessWidget {
       body: Stack(
         children: [
           TopNavbar(),
-          GetBuilder<CartController>(builder: (_cartController) {
+          GetBuilder<ListController>(builder: (_cartController) {
             return _cartController.getItems.length > 0
                 ? Positioned(
                     top: Dimensions.size20 * 4.5,
@@ -28,7 +30,7 @@ class ListPage extends StatelessWidget {
                       child: MediaQuery.removePadding(
                           context: context,
                           removeTop: true,
-                          child: GetBuilder<CartController>(
+                          child: GetBuilder<ListController>(
                               builder: (cartController) {
                             var _cartList = cartController.getItems;
                             return ListView.builder(

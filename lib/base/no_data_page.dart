@@ -1,5 +1,7 @@
+// imports
 import 'package:flutter/material.dart';
 
+// NoDataPage class
 class NoDataPage extends StatelessWidget {
   final String text;
   final String imgPath;

@@ -1,22 +1,24 @@
+// imports
 import 'package:food_delivery_flutter/models/products_model.dart';
 import 'package:get/get.dart';
-import '../data/repository/cart_repo.dart';
-import '../models/cart_model.dart';
+import '../data/repository/list_repo.dart';
+import '../models/list_model.dart';
 
-class CartController extends GetxController {
-  final CartRepo cartRepo;
-  CartController({required this.cartRepo});
+// ListController class
+class ListController extends GetxController {
+  final ListRepo listRepo;
+  ListController({required this.listRepo});
 
-  Map<int, CartModel> _items = {};
-  Map<int, CartModel> get items => _items;
-  List<CartModel> storageItems = [];
+  Map<int, ListModel> _items = {};
+  Map<int, ListModel> get items => _items;
+  List<ListModel> storageItems = [];
 
   void addItem(ProductModel product, int quantity) {
     var totalQuantity = 0;
     if (_items.containsKey(product.id)) {
       _items.update(product.id!, (value) {
         totalQuantity = value.quantity! + quantity;
-        return CartModel(
+        return ListModel(
           id: value.id,
           name: value.name,
           img: value.img,
@@ -33,7 +35,7 @@ class CartController extends GetxController {
     } else {
       if (quantity > 0) {
         _items.putIfAbsent(product.id!, () {
-          return CartModel(
+          return ListModel(
             id: product.id,
             name: product.name,
             img: product.img,
@@ -49,7 +51,7 @@ class CartController extends GetxController {
             'Item count', 'You should at least add 1 item to the cart.');
       }
     }
-    cartRepo.addToCartList(getItems);
+    listRepo.addToCartList(getItems);
     update();
   }
 
@@ -81,7 +83,7 @@ class CartController extends GetxController {
     return totalQuantity;
   }
 
-  List<CartModel> get getItems {
+  List<ListModel> get getItems {
     return _items.entries.map((e) {
       return e.value;
     }).toList();
@@ -95,20 +97,15 @@ class CartController extends GetxController {
     return total;
   }
 
-  List<CartModel> getCardData() {
+  List<ListModel> getCardData() {
     return storageItems;
   }
 
-  set setList(List<CartModel> items) {
+  set setList(List<ListModel> items) {
     storageItems = items;
     for (int i = 0; i < storageItems.length; i++) {
       _items.putIfAbsent(storageItems[i].product!.id!, () => storageItems[i]);
     }
-  }
-
-  void addToHistory() {
-    cartRepo.addToCartHistoryList();
-    clear();
   }
 
   void clear() {
@@ -116,17 +113,13 @@ class CartController extends GetxController {
     update();
   }
 
-  List<CartModel> getCartHistoryList() {
-    return cartRepo.getCartHistoryList();
-  }
-
-  set setItems(Map<int, CartModel> setItems) {
+  set setItems(Map<int, ListModel> setItems) {
     _items = {};
     _items = setItems;
   }
 
   void addToCartList() {
-    cartRepo.addToCartList(getItems);
+    listRepo.addToCartList(getItems);
     update();
   }
 }

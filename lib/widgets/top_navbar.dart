@@ -1,3 +1,4 @@
+// imports
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/widgets/menu_item.dart';
@@ -5,6 +6,7 @@ import '../utils/colors.dart';
 import '../utils/dimensions.dart';
 import 'big_text.dart';
 
+// TopNavbar class
 class TopNavbar extends StatelessWidget {
   const TopNavbar({
     Key? key,

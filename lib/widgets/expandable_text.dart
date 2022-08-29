@@ -1,8 +1,10 @@
+// imports
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/utils/colors.dart';
 import 'package:food_delivery_flutter/utils/dimensions.dart';
 import 'package:food_delivery_flutter/widgets/small_text.dart';
 
+// ExpandableText class
 class ExpandableText extends StatefulWidget {
   final String text;
   const ExpandableText({Key? key, required this.text}) : super(key: key);

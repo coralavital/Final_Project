@@ -1,16 +1,18 @@
-import 'package:food_delivery_flutter/controllers/cart_controller.dart';
-import 'package:food_delivery_flutter/data/repository/popular_product_repo.dart';
-import 'package:food_delivery_flutter/models/cart_model.dart';
+// imports
+import 'package:food_delivery_flutter/controllers/list_controller.dart';
+import 'package:food_delivery_flutter/data/repository/product_repo.dart';
+import 'package:food_delivery_flutter/models/list_model.dart';
 import 'package:food_delivery_flutter/models/products_model.dart';
 import 'package:get/get.dart';
 
+// PopularProductController class
 class PopularProductController extends GetxController {
   final PopularProductRepo popularProductRepo;
   PopularProductController({required this.popularProductRepo});
 
   List<ProductModel> _popularProductList = [];
   List<ProductModel> get popularProductList => _popularProductList;
-  late CartController _cart;
+  late ListController _list;
 
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
@@ -53,32 +55,32 @@ class PopularProductController extends GetxController {
     }
   }
 
-  void initProduct(ProductModel product, CartController cart) {
+  void initProduct(ProductModel product, ListController cart) {
     _quantity = 0;
     _inCartItems = 0;
-    _cart = cart;
+    _list = cart;
     var exist = false;
-    exist = _cart.existInCartList(product);
+    exist = _list.existInCartList(product);
     if (exist) {
-      _inCartItems = _cart.getQuantity(product);
+      _inCartItems = _list.getQuantity(product);
     }
   }
 
   void addItem(ProductModel product) {
     // if (_quantity > 0) {
-    _cart.addItem(product, _quantity);
+    _list.addItem(product, _quantity);
     _quantity = 0;
-    _inCartItems = _cart.getQuantity(product);
-    _cart.items.forEach((key, value) {
+    _inCartItems = _list.getQuantity(product);
+    _list.items.forEach((key, value) {
     });
     update();
   }
 
   int get totalItems {
-    return _cart.totalItems;
+    return _list.totalItems;
   }
 
-  List<CartModel> get getItems {
-    return _cart.getItems;
+  List<ListModel> get getItems {
+    return _list.getItems;
   }
 }
