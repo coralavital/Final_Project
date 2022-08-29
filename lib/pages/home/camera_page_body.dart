@@ -154,7 +154,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                   'Choose Product\n',
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      color: AppColors.mainColor,
+                                      color: AppColors.paraColor,
                                       fontSize: Dimensions.size20),
                                 ),
                               ],
@@ -164,9 +164,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                               children: [
                                 Text(
                                   'Does the product you want to\nadd have an expiration date?',
-                                  style: TextStyle(                                      
+                                  style: TextStyle(
                                       fontWeight: FontWeight.w500,
-                                      color: AppColors.mainColor,
+                                      color: AppColors.mainBlackColor,
                                       fontSize: Dimensions.size15),
                                 ),
                               ],
@@ -181,7 +181,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                 onPressed: () => Navigator.pop(context, 'No'),
                                 child: SmallText(
                                   text: 'No',
-                                  color: AppColors.mainColor,
+                                  color: AppColors.paraColor,
                                   size: Dimensions.size15,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -191,7 +191,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                       Navigator.pop(context, 'Yes'),
                                   child: SmallText(
                                     text: 'Yes',
-                                    color: AppColors.mainColor,
+                                    color: AppColors.paraColor,
                                     size: Dimensions.size15,
                                     fontWeight: FontWeight.w500,
                                   )),
