@@ -2,7 +2,7 @@
 import 'package:food_delivery_flutter/controllers/list_controller.dart';
 import 'package:food_delivery_flutter/data/repository/product_repo.dart';
 import 'package:food_delivery_flutter/models/list_model.dart';
-import 'package:food_delivery_flutter/models/products_model.dart';
+import 'package:food_delivery_flutter/models/product_model.dart';
 import 'package:get/get.dart';
 
 // PopularProductController class

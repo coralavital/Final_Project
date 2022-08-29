@@ -6,7 +6,7 @@ import 'package:food_delivery_flutter/utils/colors.dart';
 import 'package:food_delivery_flutter/utils/constants.dart';
 import 'package:food_delivery_flutter/utils/dimensions.dart';
 import 'package:get/get.dart';
-import '../../models/products_model.dart';
+import '../../models/product_model.dart';
 import '../../widgets/big_text.dart';
 import '../../widgets/small_text.dart';
 
@@ -45,8 +45,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       children: [
         GetBuilder<PopularProductController>(builder: (popularProducts) {
           return popularProducts.isLoaded
-              ? Container(
-                  height: Dimensions.size550,
+              ? SizedBox(
+                  height: Dimensions.size530,
                   child: PageView.builder(
                       controller: pageController,
                       itemCount: 2,
@@ -76,7 +76,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     );
   }
 
-  Widget _buildPageItem(int index, ProductModel popularProduct) {
+  Widget _buildPageItem(int index, ProductModel cameraProduct) {
     Matrix4 matrix = Matrix4.identity();
     if (index == _currentPageValue.floor()) {
       var currScale = 1 - (_currentPageValue - index) * (1 - _scaleFactor);
@@ -108,18 +108,18 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           GestureDetector(
             child: Container(
               // image height
-              height: Dimensions.size550,
+              height: Dimensions.size490,
               margin: EdgeInsets.only(
                   left: Dimensions.size10,
                   right: Dimensions.size10,
-                  top: Dimensions.size10),
+                  top: Dimensions.size20),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(Dimensions.size20),
                 color: index.isEven ? Color(0xff69c5df) : Color(0xFF9294cc),
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
-                      AppConstants.baseUrl + '/uploads/' + popularProduct.img!),
+                      AppConstants.baseUrl + '/uploads/' + cameraProduct.img!),
                 ),
               ),
             ),
@@ -127,19 +127,22 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           Positioned(
             left: 0,
             right: 0,
-            bottom: Dimensions.size20,
+            bottom: 0,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  height: Dimensions.size50,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              AppColors.mainColor),
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(Dimensions.size20),
+                          ),
+                          onSurface: AppColors.mainColor,
+                          // maximumSize: Size(width, height)
                         ),
                         onPressed: () => showDialog<String>(
                           context: context,

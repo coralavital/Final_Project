@@ -1,5 +1,5 @@
 // imports
-import 'package:food_delivery_flutter/models/products_model.dart';
+import 'package:food_delivery_flutter/models/product_model.dart';
 
 // ListModel class
 class ListModel {

@@ -1,5 +1,5 @@
 // imports
-import 'package:food_delivery_flutter/models/products_model.dart';
+import 'package:food_delivery_flutter/models/product_model.dart';
 import 'package:get/get.dart';
 import '../data/repository/list_repo.dart';
 import '../models/list_model.dart';

@@ -97,7 +97,7 @@ class _AccountPageState extends State<Account> {
                           TextButton(
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
-                                  AppColors.mainColor),
+                                  AppColors.paraColor),
                             ),
                             onPressed: () => showDialog<String>(
                               context: context,
@@ -171,7 +171,7 @@ class _AccountPageState extends State<Account> {
                           TextButton(
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
-                                  AppColors.mainColor),
+                                  AppColors.paraColor),
                             ),
                             onPressed: () => showDialog<String>(
                               context: context,
