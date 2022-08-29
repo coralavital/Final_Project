@@ -7,6 +7,7 @@ import 'package:food_delivery_flutter/utils/constants.dart';
 import 'package:food_delivery_flutter/utils/dimensions.dart';
 import 'package:get/get.dart';
 import '../../models/products_model.dart';
+import '../../widgets/big_text.dart';
 import '../../widgets/small_text.dart';
 
 // FoodPageBody class
@@ -126,85 +127,90 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           Positioned(
             left: 0,
             right: 0,
-            bottom: Dimensions.size10,
+            bottom: Dimensions.size20,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  width: Dimensions.size50,
                   height: Dimensions.size50,
-                  child: FloatingActionButton(
-                    backgroundColor: AppColors.mainColor,
-                    foregroundColor: Colors.white,
-                    heroTag: Text('btn4'),
-                    // the user will selected witch product he wants to add to the list
-                    onPressed: () => showDialog<String>(
-                      context: context,
-                      builder: (BuildContext context) => AlertDialog(
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
-                        title: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              AppColors.mainColor),
+                        ),
+                        onPressed: () => showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            shape: const RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(50))),
+                            title: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Text(
-                                  'Choose Product\n',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      color: AppColors.paraColor,
-                                      fontSize: Dimensions.size20),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Choose Product\n',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                          color: AppColors.paraColor,
+                                          fontSize: Dimensions.size20),
+                                    ),
+                                  ],
                                 ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Does the product you want to\nadd have an expiration date?',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          color: AppColors.mainBlackColor,
+                                          fontSize: Dimensions.size15),
+                                    ),
+                                  ],
+                                )
                               ],
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Does the product you want to\nadd have an expiration date?',
-                                  style: TextStyle(
+                            actions: <Widget>[
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(context, 'No'),
+                                    child: SmallText(
+                                      text: 'No',
+                                      color: AppColors.paraColor,
+                                      size: Dimensions.size15,
                                       fontWeight: FontWeight.w500,
-                                      color: AppColors.mainBlackColor,
-                                      fontSize: Dimensions.size15),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                        actions: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              TextButton(
-                                onPressed: () => Navigator.pop(context, 'No'),
-                                child: SmallText(
-                                  text: 'No',
-                                  color: AppColors.paraColor,
-                                  size: Dimensions.size15,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(context, 'Yes'),
-                                  child: SmallText(
-                                    text: 'Yes',
-                                    color: AppColors.paraColor,
-                                    size: Dimensions.size15,
-                                    fontWeight: FontWeight.w500,
-                                  )),
+                                    ),
+                                  ),
+                                  TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(context, 'Yes'),
+                                      child: SmallText(
+                                        text: 'Yes',
+                                        color: AppColors.paraColor,
+                                        size: Dimensions.size15,
+                                        fontWeight: FontWeight.w500,
+                                      )),
+                                ],
+                              )
                             ],
-                          )
-                        ],
+                          ),
+                        ),
+                        child: Icon(
+                          Icons.add,
+                          size: Dimensions.size30,
+                        ),
                       ),
-                    ),
-
-                    child: Icon(
-                      Icons.add,
-                      size: Dimensions.size30,
-                    ),
+                    ],
                   ),
                 )
               ],

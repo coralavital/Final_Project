@@ -7,7 +7,11 @@ import '../../utils/dimensions.dart';
 
 // HomePage class
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  int selectedIndex;
+  HomePage({
+    Key? key,
+    this.selectedIndex = 0,
+  }) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -16,7 +20,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 1;
 
-  List pages = [ListPage(), MainFoodPage(), ListPage()];
+  List pages = [ListPage(), MainPage(), ListPage()];
 
   void onTapNav(int index) {
     setState(() {
@@ -25,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   List<Widget> _buildScreens() {
-    return [ListPage(), MainFoodPage(), ListPage()];
+    return [ListPage(), MainPage(), ListPage()];
   }
 
   @override

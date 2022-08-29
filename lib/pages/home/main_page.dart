@@ -4,15 +4,15 @@ import 'package:flutter/services.dart';
 import 'package:food_delivery_flutter/widgets/top_navbar.dart';
 import 'camera_page_body.dart';
 
-// MainFoodPage class
-class MainFoodPage extends StatefulWidget {
-  const MainFoodPage({Key? key}) : super(key: key);
+// MainPage class
+class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
 
   @override
-  State<MainFoodPage> createState() => _MainFoodPageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _MainFoodPageState extends State<MainFoodPage> {
+class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     String dropdownValue = 'Setting';
