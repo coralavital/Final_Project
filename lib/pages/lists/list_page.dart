@@ -1,4 +1,5 @@
 // imports
+import 'package:final_project/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 import 'package:final_project/base/no_data_page.dart';
 import 'package:final_project/controllers/list_controller.dart';
@@ -7,6 +8,8 @@ import 'package:final_project/utils/constants.dart';
 import 'package:final_project/utils/dimensions.dart';
 import 'package:final_project/widgets/big_text.dart';
 import 'package:get/get.dart';
+import '../../controllers/product_controller.dart';
+import '../../routes/route_helper.dart';
 import '../../widgets/top_navbar.dart';
 
 // ListPage class
@@ -28,15 +31,14 @@ class ListPage extends StatelessWidget {
                     right: Dimensions.size20,
                     bottom: 0,
                     child: Container(
-                      //color: Colors.red,
                       child: MediaQuery.removePadding(
                           context: context,
                           removeTop: true,
                           child: GetBuilder<ListController>(
-                              builder: (cartController) {
-                            var _cartList = cartController.getItems;
+                              builder: (listController) {
+                            var _list = listController.getItems;
                             return ListView.builder(
-                                itemCount: _cartList.length,
+                                itemCount: _list.length,
                                 itemBuilder: (_, index) {
                                   return SizedBox(
                                     height: Dimensions.size20 * 5,
@@ -44,21 +46,8 @@ class ListPage extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         GestureDetector(
-                                          //onTap: () {
-                                          //  var popularIndex = Get.find<
-                                          //          PopularProductController>()
-                                          //      .popularProductList
-                                          //      .indexOf(
-                                          //          _cartList[index].product!);
-                                          //  if (popularIndex >= 0) {
-                                          //    Get.toNamed(
-                                          //      RouteHelper.getPopularFood(
-                                          //          popularIndex, 'cartpage'),
-                                          //    );
-                                          //  }
-                                          //},
                                           child: Container(
-                                            width: Dimensions.size20 * 7,
+                                            width: Dimensions.size20 * 5,
                                             height: Dimensions.size20 * 5,
                                             margin: EdgeInsets.only(
                                               bottom: Dimensions.size10,
@@ -70,7 +59,7 @@ class ListPage extends StatelessWidget {
                                                 image: NetworkImage(
                                                   AppConstants.baseUrl +
                                                       AppConstants.uploadUrl +
-                                                      cartController
+                                                      listController
                                                           .getItems[index].img!,
                                                 ),
                                               ),
@@ -91,71 +80,117 @@ class ListPage extends StatelessWidget {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceEvenly,
                                             children: [
-                                              BigText(
-                                                text: cartController
-                                                    .getItems[index].name!,
-                                                color: Colors.black54,
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  BigText(
+                                                    text: listController
+                                                        .getItems[index].name!,
+                                                    color: AppColors
+                                                        .mainBlackColor,
+                                                  ),
+                                                ],
                                               ),
                                               Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceBetween,
                                                 children: [
-                                                  Container(
-                                                    padding: EdgeInsets.all(
-                                                      Dimensions.size20,
-                                                    ),
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                        Dimensions.size20,
+                                                  TextButton(
+                                                    style: ButtonStyle(
+                                                      shape: MaterialStateProperty
+                                                          .all<
+                                                              RoundedRectangleBorder>(
+                                                        RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      Dimensions
+                                                                          .size20),
+                                                        ),
                                                       ),
-                                                      color: Colors.white,
+                                                      backgroundColor:
+                                                          MaterialStateProperty
+                                                              .all<
+                                                                      Color>(
+                                                                  AppColors
+                                                                      .mainColor),
                                                     ),
-                                                    child: Row(
-                                                      children: [
-                                                        GestureDetector(
-                                                          onTap: () {
-                                                            cartController.addItem(
-                                                                _cartList[index]
-                                                                    .product!,
-                                                                -1);
-                                                          },
-                                                          child: Icon(
-                                                            Icons.remove,
-                                                            color: AppColors
-                                                                .signColor,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .symmetric(
-                                                            horizontal: 5.0,
-                                                          ),
-                                                          child: BigText(
-                                                            text:
-                                                                _cartList[index]
-                                                                    .quantity
-                                                                    .toString(),
-                                                          ),
-                                                        ),
-                                                        GestureDetector(
-                                                          onTap: () {
-                                                            cartController.addItem(
-                                                                _cartList[index]
-                                                                    .product!,
-                                                                1);
-                                                          },
-                                                          child: Icon(
-                                                            Icons.add,
-                                                            color: AppColors
-                                                                .signColor,
-                                                          ),
-                                                        ),
-                                                      ],
+                                                    onPressed: () =>
+                                                        showDialog<String>(
+                                                      context: context,
+                                                      builder: (BuildContext
+                                                              context) =>
+                                                          AlertDialog(
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius: BorderRadius.all(
+                                                                Radius.circular(
+                                                                    Dimensions
+                                                                        .size20))),
+                                                        title: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              BigText(
+                                                                text:
+                                                                    'Choose a date',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w700,
+                                                                color: AppColors
+                                                                    .titleColor,
+                                                              ),
+                                                            ]),
+                                                        content: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .symmetric(
+                                                                    horizontal:
+                                                                        8,
+                                                                    vertical:
+                                                                        16),
+                                                            child: Container()),
+                                                      ),
+                                                    ),
+                                                    child: SmallText(
+                                                      text: "Add expired date",
+                                                      color: Colors.white,
+                                                      size: Dimensions.size10,
+                                                      fontWeight:
+                                                          FontWeight.w500,
                                                     ),
                                                   ),
+                                                  TextButton(
+                                                    style: ButtonStyle(
+                                                      shape: MaterialStateProperty
+                                                          .all<
+                                                              RoundedRectangleBorder>(
+                                                        RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      Dimensions
+                                                                          .size20),
+                                                        ),
+                                                      ),
+                                                      backgroundColor:
+                                                          MaterialStateProperty
+                                                              .all<
+                                                                      Color>(
+                                                                  AppColors
+                                                                      .mainColor),
+                                                    ),
+                                                    onPressed: () {},
+                                                    child: SmallText(
+                                                      text: "Add to cart",
+                                                      color: Colors.white,
+                                                      size: Dimensions.size10,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                                  )
                                                 ],
                                               ),
                                             ],

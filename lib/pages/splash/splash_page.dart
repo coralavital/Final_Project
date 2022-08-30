@@ -54,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen>
             child: Center(
               child: Image.asset(
                 'assets/image/Icon-FridgeIT.png',
-                width: Dimensions.size30 * 6,
+                width: Dimensions.size30 * 7,
               ),
             ),
           ),

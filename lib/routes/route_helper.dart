@@ -2,6 +2,7 @@
 import 'package:final_project/pages/lists/list_page.dart';
 import 'package:final_project/pages/account/account.dart';
 import 'package:final_project/pages/home/home_page.dart';
+import 'package:final_project/pages/lists/shopping_page.dart';
 import 'package:final_project/pages/splash/splash_page.dart';
 import 'package:get/get.dart';
 
@@ -13,13 +14,15 @@ class RouteHelper {
   static const String initial = '/';
   static const String cameras = '/cameras';
   static const String account = '/account';
+  static const String listPage = '/list-page';
   static const String shoppingPage = '/shopping-page';
   static const String help = '/help';
 
   static String getSplash() => splash;
   static String getInitial() => initial;
   static String getAccount() => account;
-  static String getCartPage() => shoppingPage;
+  static String getListPage() => listPage;
+  static String getShoppingPage() => shoppingPage;
   static String getHelp() => help;
 
   static List<GetPage> routes = [
@@ -40,9 +43,16 @@ class RouteHelper {
       transition: Transition.fadeIn,
     ),
     GetPage(
+      name: listPage,
+      page: () {
+        return const ListPage();
+      },
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
         name: shoppingPage,
         page: () {
-          return const ListPage();
+          return const ShoppingPage();
         },
         transition: Transition.fadeIn),
   ];

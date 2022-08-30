@@ -84,9 +84,21 @@ class ListController extends GetxController {
   }
 
   List<ListModel> get getItems {
-    return _items.entries.map((e) {
-      return e.value;
-    }).toList();
+    //return _items.entries.map((e) {
+    //  return e.value;
+    //}).toList();
+    return [
+      ListModel(
+          id: 11,
+          name: "Hilsha fish",
+          img: "images/1343ce6cf6792383dfc071727afd5c46.jpeg",
+          quantity: 3),
+      ListModel(
+          id: 11,
+          name: "Hilsha fish",
+          img: "images/1343ce6cf6792383dfc071727afd5c46.jpeg",
+          quantity: 4)
+    ];
   }
 
   int get totalAmount {

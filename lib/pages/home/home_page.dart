@@ -1,5 +1,6 @@
 // imports
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:final_project/pages/lists/shopping_page.dart';
 import 'package:flutter/material.dart';
 import 'package:final_project/pages/lists/list_page.dart';
 import 'package:final_project/pages/home/main_page.dart';
@@ -43,7 +44,7 @@ class _HomePageState extends State<HomePage> {
           },
           children: const <Widget>[
             MainPage(),
-            ListPage(),
+            ShoppingPage(),
             ListPage(),
             Account(),
           ],
@@ -75,7 +76,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavyBarItem(
               activeColor: AppColors.paraColor,
               title: Text(
-                'Expired List',
+                'Product List',
                 style: TextStyle(color: AppColors.mainColor),
               ),
               icon: Icon(Icons.list_alt_rounded, color: AppColors.mainColor)),

@@ -115,109 +115,15 @@ class _MainPageBodyState extends State<MainPageBody> {
                   top: Dimensions.size20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimensions.size20),
-                color: index.isEven ? const Color(0xff69c5df) : const Color(0xFF9294cc),
+                color: index.isEven
+                    ? const Color(0xff69c5df)
+                    : const Color(0xFF9294cc),
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
                       AppConstants.baseUrl + '/uploads/' + cameraProduct.img!),
                 ),
               ),
-            ),
-          ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(Dimensions.size20),
-                          ),
-                          onSurface: AppColors.mainColor,
-                        ),
-                        onPressed: () => showDialog<String>(
-                          context: context,
-                          builder: (BuildContext context) => AlertDialog(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(Dimensions.size20),
-                              ),
-                            ),
-                            title: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Choose Product\n',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w700,
-                                          color: AppColors.paraColor,
-                                          fontSize: Dimensions.size20),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Does the product you want to\nadd have an expiration date?',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          color: AppColors.mainBlackColor,
-                                          fontSize: Dimensions.size15),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                            actions: <Widget>[
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(context, 'No'),
-                                    child: SmallText(
-                                      text: 'No',
-                                      color: AppColors.paraColor,
-                                      size: Dimensions.size15,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(context, 'Yes'),
-                                      child: SmallText(
-                                        text: 'Yes',
-                                        color: AppColors.paraColor,
-                                        size: Dimensions.size15,
-                                        fontWeight: FontWeight.w500,
-                                      )),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                        child: Icon(
-                          Icons.add,
-                          size: Dimensions.size30,
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
             ),
           ),
         ],
