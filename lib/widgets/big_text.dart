@@ -1,6 +1,6 @@
 // imports
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/utils/dimensions.dart';
+import 'package:final_project/utils/dimensions.dart';
 
 // BigText class
 class BigText extends StatelessWidget {

@@ -1,6 +1,6 @@
 // imports
 import 'dart:convert';
-import 'package:food_delivery_flutter/utils/constants.dart';
+import 'package:final_project/utils/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../models/list_model.dart';
 
@@ -13,13 +13,12 @@ class ListRepo {
 
   void addToCartList(List<ListModel> cartList) {
     // sharedPreferences.remove(AppConstants.cartList);
-    // sharedPreferences.remove(AppConstants.cartHistoryList);
     list = [];
     var time = DateTime.now().toString();
-    cartList.forEach((element) {
+    for (var element in cartList) {
       element.time = time;
-      return list.add(jsonEncode(element));
-    });
+      continue;
+    }
     sharedPreferences.setStringList(AppConstants.cartList, list);
     //print(sharedPreferences.getStringList(AppConstants.cartList));
   }
@@ -30,9 +29,9 @@ class ListRepo {
     if (sharedPreferences.containsKey(AppConstants.cartList)) {
       carts = sharedPreferences.getStringList(AppConstants.cartList)!;
     }
-    carts.forEach((element) {
+    for (var element in carts) {
       list.add(ListModel.fromJson(jsonDecode(element)));
-    });
+    }
     return list;
   }
 

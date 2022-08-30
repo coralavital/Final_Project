@@ -1,8 +1,8 @@
 // imports
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/routes/route_helper.dart';
-import 'package:food_delivery_flutter/utils/dimensions.dart';
+import 'package:final_project/routes/route_helper.dart';
+import 'package:final_project/utils/dimensions.dart';
 import 'package:get/get.dart';
 import '../../controllers/product_controller.dart';
 
@@ -27,14 +27,14 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
     )..forward();
     animation = CurvedAnimation(
       parent: controller,
       curve: Curves.linear,
     );
     Timer(
-      Duration(seconds: 4),
+      const Duration(seconds: 4),
       () => Get.offNamed(
         RouteHelper.getInitial(),
       ),

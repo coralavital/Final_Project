@@ -1,16 +1,15 @@
 // imports
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/pages/lists/list_page.dart';
-import 'package:food_delivery_flutter/pages/home/main_page.dart';
-import 'package:food_delivery_flutter/utils/colors.dart';
-import '../../utils/dimensions.dart';
+import 'package:final_project/pages/lists/list_page.dart';
+import 'package:final_project/pages/home/main_page.dart';
+import 'package:final_project/utils/colors.dart';
+import '../account/account.dart';
 
 // HomePage class
 class HomePage extends StatefulWidget {
-  int selectedIndex;
   HomePage({
     Key? key,
-    this.selectedIndex = 0,
   }) : super(key: key);
 
   @override
@@ -18,47 +17,77 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 1;
+  int _currentIndex = 0;
+  late PageController _pageController;
 
-  List pages = [ListPage(), MainPage(), ListPage()];
-
-  void onTapNav(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
   }
 
-  List<Widget> _buildScreens() {
-    return [ListPage(), MainPage(), ListPage()];
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: AppColors.mainColor,
-        unselectedItemColor: AppColors.iconColor1,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        currentIndex: _selectedIndex,
-        onTap: onTapNav,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart_rounded),
-            label: 'poductList',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              size: Dimensions.size30,
-              //color: Colors.white,
+      body: SizedBox.expand(
+        child: PageView(
+          controller: _pageController,
+          onPageChanged: (index) {
+            setState(() => _currentIndex = index);
+          },
+          children: const <Widget>[
+            MainPage(),
+            ListPage(),
+            ListPage(),
+            Account(),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNavyBar(
+        selectedIndex: _currentIndex,
+        backgroundColor: AppColors.buttonBackgroundColor,
+        onItemSelected: (index) {
+          setState(() => _currentIndex = index);
+          _pageController.jumpToPage(index);
+        },
+        items: <BottomNavyBarItem>[
+          BottomNavyBarItem(
+              activeColor: AppColors.paraColor,
+              title: Text(
+                'Home',
+                style: TextStyle(color: AppColors.mainColor),
+              ),
+              icon: Icon(Icons.home, color: AppColors.mainColor)),
+          BottomNavyBarItem(
+              activeColor: AppColors.paraColor,
+              title: Text(
+                'Shopping List',
+                style: TextStyle(color: AppColors.mainColor),
+              ),
+              icon: Icon(Icons.shopping_cart_rounded,
+                  color: AppColors.mainColor)),
+          BottomNavyBarItem(
+              activeColor: AppColors.paraColor,
+              title: Text(
+                'Expired List',
+                style: TextStyle(color: AppColors.mainColor),
+              ),
+              icon: Icon(Icons.list_alt_rounded, color: AppColors.mainColor)),
+          BottomNavyBarItem(
+            activeColor: AppColors.paraColor,
+            title: Text(
+              'Me',
+              style: TextStyle(color: AppColors.mainColor),
             ),
-            label: 'home',
-            backgroundColor: AppColors.mainColor,
+            icon:
+                Icon(Icons.account_circle_rounded, color: AppColors.mainColor),
           ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.list_alt_rounded), label: 'expiredList'),
         ],
       ),
     );

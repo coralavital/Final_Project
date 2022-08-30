@@ -1,6 +1,6 @@
 // imports
-import 'package:food_delivery_flutter/data/api/api_client.dart';
-import 'package:food_delivery_flutter/utils/constants.dart';
+import 'package:final_project/data/api/api_client.dart';
+import 'package:final_project/utils/constants.dart';
 import 'package:get/get.dart';
 
 // PopularProductRepo class

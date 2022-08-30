@@ -1,4 +1,5 @@
 // imports
+import 'package:final_project/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
 // NavbarMenuItem class
@@ -13,19 +14,22 @@ class NavbarMenuItem {
 }
 
 class NavbarMenuItems {
-  static const List<NavbarMenuItem> firstItems = [account];
-  static const List<NavbarMenuItem> secondItems = [logout];
+  static const List<NavbarMenuItem> firstItems = [about];
+  static const List<NavbarMenuItem> secondItems = [help];
+  static const List<NavbarMenuItem> thirdItems = [logout];
 
-  static const account =
-      NavbarMenuItem(text: 'Account', icon: Icons.account_circle_rounded);
+  static const help =
+      NavbarMenuItem(text: 'Help', icon: Icons.help_center_rounded);
+  static const about =
+      NavbarMenuItem(text: 'About', icon: Icons.info_outline_rounded);
   static const logout = NavbarMenuItem(text: 'Log Out', icon: Icons.logout);
 
   static Widget buildItem(NavbarMenuItem item) {
     return Row(
       children: [
-        Icon(item.icon, color: Colors.white, size: 15),
-        const SizedBox(
-          width: 5,
+        Icon(item.icon, color: Colors.white, size: Dimensions.size15),
+        SizedBox(
+          width: Dimensions.size5,
         ),
         Text(
           item.text,
@@ -39,8 +43,11 @@ class NavbarMenuItems {
 
   static onChanged(BuildContext context, NavbarMenuItem item) {
     switch (item) {
-      case NavbarMenuItems.account:
-        Navigator.of(context).pushNamed('/account');
+      case NavbarMenuItems.help:
+        Navigator.of(context).pushNamed('/help');
+        break;
+      case NavbarMenuItems.about:
+        Navigator.of(context).pushNamed('/help');
         break;
       case NavbarMenuItems.logout:
         Navigator.of(context).pushNamed('/cameras');

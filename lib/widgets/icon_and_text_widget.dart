@@ -1,6 +1,6 @@
 // imports
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/widgets/small_text.dart';
+import 'package:final_project/widgets/small_text.dart';
 
 // IconAndTextWidget class
 class IconAndTextWidget extends StatelessWidget {
@@ -20,7 +20,7 @@ class IconAndTextWidget extends StatelessWidget {
     return Row(
       children: [
         Icon(icon, color: iconColor),
-        SizedBox(width: 5),
+        const SizedBox(width: 5),
         SmallText(text: text),
       ],
     );

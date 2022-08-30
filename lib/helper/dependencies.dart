@@ -1,9 +1,9 @@
 // imports
-import 'package:food_delivery_flutter/controllers/list_controller.dart';
-import 'package:food_delivery_flutter/controllers/product_controller.dart';
-import 'package:food_delivery_flutter/data/api/api_client.dart';
-import 'package:food_delivery_flutter/data/repository/product_repo.dart';
-import 'package:food_delivery_flutter/utils/constants.dart';
+import 'package:final_project/controllers/list_controller.dart';
+import 'package:final_project/controllers/product_controller.dart';
+import 'package:final_project/data/api/api_client.dart';
+import 'package:final_project/data/repository/product_repo.dart';
+import 'package:final_project/utils/constants.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/repository/list_repo.dart';

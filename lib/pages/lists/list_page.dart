@@ -1,11 +1,11 @@
 // imports
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/base/no_data_page.dart';
-import 'package:food_delivery_flutter/controllers/list_controller.dart';
-import 'package:food_delivery_flutter/utils/colors.dart';
-import 'package:food_delivery_flutter/utils/constants.dart';
-import 'package:food_delivery_flutter/utils/dimensions.dart';
-import 'package:food_delivery_flutter/widgets/big_text.dart';
+import 'package:final_project/base/no_data_page.dart';
+import 'package:final_project/controllers/list_controller.dart';
+import 'package:final_project/utils/colors.dart';
+import 'package:final_project/utils/constants.dart';
+import 'package:final_project/utils/dimensions.dart';
+import 'package:final_project/widgets/big_text.dart';
 import 'package:get/get.dart';
 import '../../widgets/top_navbar.dart';
 
@@ -17,9 +17,11 @@ class ListPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          TopNavbar(),
+          TopNavbar(
+            icon: const Icon(Icons.list_rounded),
+          ),
           GetBuilder<ListController>(builder: (_cartController) {
-            return _cartController.getItems.length > 0
+            return _cartController.getItems.isNotEmpty
                 ? Positioned(
                     top: Dimensions.size20 * 4.5,
                     left: Dimensions.size20,
@@ -36,7 +38,7 @@ class ListPage extends StatelessWidget {
                             return ListView.builder(
                                 itemCount: _cartList.length,
                                 itemBuilder: (_, index) {
-                                  return Container(
+                                  return SizedBox(
                                     height: Dimensions.size20 * 5,
                                     width: double.maxFinite,
                                     child: Row(
@@ -81,7 +83,7 @@ class ListPage extends StatelessWidget {
                                           ),
                                         ),
                                         Expanded(
-                                            child: Container(
+                                            child: SizedBox(
                                           height: Dimensions.size20 * 5,
                                           child: Column(
                                             crossAxisAlignment:
@@ -166,7 +168,7 @@ class ListPage extends StatelessWidget {
                           })),
                     ),
                   )
-                : NoDataPage(text: 'Your list is empty.');
+                : const NoDataPage(text: 'Your list is empty.');
           }),
         ],
       ),

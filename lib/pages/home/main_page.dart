@@ -1,7 +1,7 @@
 // imports
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:food_delivery_flutter/widgets/top_navbar.dart';
+import 'package:final_project/widgets/top_navbar.dart';
 import 'camera_page_body.dart';
 
 // MainPage class
@@ -15,15 +15,16 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
-    String dropdownValue = 'Setting';
     SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+        const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return Scaffold(
       body: Column(
         children: [
-          TopNavbar(),
-          Expanded(
-            child: SingleChildScrollView(child: FoodPageBody()),
+          TopNavbar(
+            icon: const Icon(Icons.list_rounded),
+          ),
+          const Expanded(
+            child: SingleChildScrollView(child: MainPageBody()),
           ),
         ],
       ),

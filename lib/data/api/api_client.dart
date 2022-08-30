@@ -1,5 +1,5 @@
 // imports
-import 'package:food_delivery_flutter/utils/constants.dart';
+import 'package:final_project/utils/constants.dart';
 import 'package:get/get.dart';
 
 // ApiClient class

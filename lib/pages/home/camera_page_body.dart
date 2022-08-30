@@ -1,28 +1,27 @@
 // imports
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/controllers/product_controller.dart';
-import 'package:food_delivery_flutter/utils/colors.dart';
-import 'package:food_delivery_flutter/utils/constants.dart';
-import 'package:food_delivery_flutter/utils/dimensions.dart';
+import 'package:final_project/controllers/product_controller.dart';
+import 'package:final_project/utils/colors.dart';
+import 'package:final_project/utils/constants.dart';
+import 'package:final_project/utils/dimensions.dart';
 import 'package:get/get.dart';
 import '../../models/product_model.dart';
-import '../../widgets/big_text.dart';
 import '../../widgets/small_text.dart';
 
 // FoodPageBody class
-class FoodPageBody extends StatefulWidget {
-  const FoodPageBody({Key? key}) : super(key: key);
+class MainPageBody extends StatefulWidget {
+  const MainPageBody({Key? key}) : super(key: key);
 
   @override
-  State<FoodPageBody> createState() => _FoodPageBodyState();
+  State<MainPageBody> createState() => _MainPageBodyState();
 }
 
-class _FoodPageBodyState extends State<FoodPageBody> {
+class _MainPageBodyState extends State<MainPageBody> {
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currentPageValue = 0.0;
-  double _scaleFactor = 0.8;
-  double _height = Dimensions.size260;
+  final double _scaleFactor = 0.8;
+  final double _height = Dimensions.size260;
   @override
   void initState() {
     super.initState();
@@ -49,6 +48,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   height: Dimensions.size530,
                   child: PageView.builder(
                       controller: pageController,
+                      // itemCount for two cameras
                       itemCount: 2,
                       itemBuilder: (context, position) {
                         return _buildPageItem(position,
@@ -64,11 +64,11 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             dotsCount: popularProducts.popularProductList.isEmpty ? 1 : 2,
             position: _currentPageValue,
             decorator: DotsDecorator(
-              activeColor: AppColors.mainColor,
-              size: const Size.square(10.0),
+              activeColor: AppColors.paraColor,
+              size: Size.square(Dimensions.size10),
               activeSize: const Size(18.0, 9.0),
               activeShape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.0)),
+                  borderRadius: BorderRadius.circular(Dimensions.size5)),
             ),
           );
         }),
@@ -115,7 +115,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   top: Dimensions.size20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimensions.size20),
-                color: index.isEven ? Color(0xff69c5df) : Color(0xFF9294cc),
+                color: index.isEven ? const Color(0xff69c5df) : const Color(0xFF9294cc),
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
@@ -142,14 +142,15 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                 BorderRadius.circular(Dimensions.size20),
                           ),
                           onSurface: AppColors.mainColor,
-                          // maximumSize: Size(width, height)
                         ),
                         onPressed: () => showDialog<String>(
                           context: context,
                           builder: (BuildContext context) => AlertDialog(
-                            shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(50))),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(Dimensions.size20),
+                              ),
+                            ),
                             title: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [

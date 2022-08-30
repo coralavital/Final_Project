@@ -1,12 +1,10 @@
 // imports
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/utils/colors.dart';
-import 'package:food_delivery_flutter/utils/dimensions.dart';
-import 'package:food_delivery_flutter/widgets/big_text.dart';
-import 'package:food_delivery_flutter/widgets/small_text.dart';
-import 'package:food_delivery_flutter/widgets/top_navbar.dart';
-
-import '../../widgets/bottom_navbar.dart';
+import 'package:final_project/utils/colors.dart';
+import 'package:final_project/utils/dimensions.dart';
+import 'package:final_project/widgets/big_text.dart';
+import 'package:final_project/widgets/small_text.dart';
+import 'package:final_project/widgets/top_navbar.dart';
 
 // Account class
 class Account extends StatefulWidget {
@@ -19,6 +17,7 @@ class Account extends StatefulWidget {
 }
 
 class _AccountPageState extends State<Account> {
+  bool flag = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +25,11 @@ class _AccountPageState extends State<Account> {
       //extendBodyBehindAppBar: true,
       body: Stack(
         children: [
-          const TopNavbar(),
+          TopNavbar(
+            icon: const Icon(
+              Icons.list_rounded,
+            ),
+          ),
           Positioned(
             left: 0,
             right: 0,
@@ -37,11 +40,11 @@ class _AccountPageState extends State<Account> {
                 horizontal: Dimensions.size20,
                 vertical: Dimensions.size10,
               ),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20)),
+                    topLeft: Radius.circular(Dimensions.size20),
+                    topRight: Radius.circular(Dimensions.size20)),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,30 +62,27 @@ class _AccountPageState extends State<Account> {
           Positioned(
             left: Dimensions.size10,
             right: Dimensions.size10,
-            top: Dimensions.size150,
+            top: Dimensions.size160,
             child: Container(
               width: Dimensions.size50,
               height: Dimensions.size450,
               decoration: BoxDecoration(
                 color: AppColors.buttonBackgroundColor,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(Dimensions.size20),
+                  topRight: Radius.circular(Dimensions.size20),
+                  bottomLeft: Radius.circular(Dimensions.size20),
+                  bottomRight: Radius.circular(Dimensions.size20),
                 ),
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                    child: TextFormField(
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Here will display Camera details',
-                      ),
+                    child: BigText(
+                      text: 'Here will display Camera details',
                     ),
                   ),
                   SizedBox(
@@ -102,9 +102,9 @@ class _AccountPageState extends State<Account> {
                             onPressed: () => showDialog<String>(
                               context: context,
                               builder: (BuildContext context) => AlertDialog(
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20))),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(Dimensions.size20))),
                                 title: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -253,23 +253,6 @@ class _AccountPageState extends State<Account> {
               ),
             ),
           ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: Dimensions.size10,
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20)),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [BottomNavbar()],
-              ),
-            ),
-          )
         ],
       ),
     );
