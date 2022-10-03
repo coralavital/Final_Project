@@ -44,8 +44,9 @@ class _HomePageState extends State<HomePage> {
           },
           children: const <Widget>[
             MainPage(),
-            ShoppingPage(),
             ListPage(),
+            ShoppingPage(),
+            ShoppingPage(),
             Account(),
           ],
         ),
@@ -68,6 +69,13 @@ class _HomePageState extends State<HomePage> {
           BottomNavyBarItem(
               activeColor: AppColors.paraColor,
               title: Text(
+                'Product List',
+                style: TextStyle(color: AppColors.mainColor),
+              ),
+              icon: Icon(Icons.list_alt_rounded, color: AppColors.mainColor)),
+          BottomNavyBarItem(
+              activeColor: AppColors.paraColor,
+              title: Text(
                 'Shopping List',
                 style: TextStyle(color: AppColors.mainColor),
               ),
@@ -76,10 +84,11 @@ class _HomePageState extends State<HomePage> {
           BottomNavyBarItem(
               activeColor: AppColors.paraColor,
               title: Text(
-                'Product List',
+                'Expired List',
                 style: TextStyle(color: AppColors.mainColor),
               ),
-              icon: Icon(Icons.list_alt_rounded, color: AppColors.mainColor)),
+              icon: Icon(Icons.shopping_cart_rounded,
+                  color: AppColors.mainColor)),
           BottomNavyBarItem(
             activeColor: AppColors.paraColor,
             title: Text(

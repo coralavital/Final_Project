@@ -122,7 +122,7 @@ class _AccountPageState extends State<Account> {
                                         TextStyle(color: AppColors.paraColor),
                                     decoration: const InputDecoration(
                                       border: UnderlineInputBorder(),
-                                      labelText: 'Enter your email',
+                                      labelText: 'Enter New Password',
                                     ),
                                   ),
                                 ),
@@ -143,9 +143,9 @@ class _AccountPageState extends State<Account> {
                                       TextButton(
                                         //need to add action to reset password
                                         onPressed: () => Navigator.pop(
-                                            context, 'Reset Password'),
+                                            context, 'Change Password'),
                                         child: SmallText(
-                                          text: 'Reset Password',
+                                          text: 'Change',
                                           color: AppColors.paraColor,
                                           size: Dimensions.size15,
                                           fontWeight: FontWeight.w500,
@@ -157,7 +157,7 @@ class _AccountPageState extends State<Account> {
                               ),
                             ),
                             child: BigText(
-                              text: "Password Setting",
+                              text: "Change Password",
                               size: Dimensions.size15,
                               fontWeight: FontWeight.w700,
                               color: Colors.white,

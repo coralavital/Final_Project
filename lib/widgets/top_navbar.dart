@@ -22,7 +22,7 @@ class TopNavbar extends StatelessWidget {
             margin: EdgeInsets.only(
               left: Dimensions.size20,
               right: Dimensions.size20,
-              top: Dimensions.size30,
+              top: Dimensions.size50,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
