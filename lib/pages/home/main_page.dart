@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:final_project/widgets/top_navbar.dart';
 import 'camera_page_body.dart';
 
+
 // MainPage class
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);

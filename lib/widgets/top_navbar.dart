@@ -54,14 +54,6 @@ class TopNavbar extends StatelessWidget {
                             child: NavbarMenuItems.buildItem(item),
                           ),
                         ),
-                        const DropdownMenuItem<Divider>(
-                            enabled: false, child: Divider()),
-                        ...NavbarMenuItems.thirdItems.map(
-                          (item) => DropdownMenuItem<NavbarMenuItem>(
-                            value: item,
-                            child: NavbarMenuItems.buildItem(item),
-                          ),
-                        ),
                       ],
                       onChanged: (value) {
                         NavbarMenuItems.onChanged(

@@ -16,13 +16,13 @@ class NavbarMenuItem {
 class NavbarMenuItems {
   static const List<NavbarMenuItem> firstItems = [about];
   static const List<NavbarMenuItem> secondItems = [help];
-  static const List<NavbarMenuItem> thirdItems = [logout];
+  //static const List<NavbarMenuItem> thirdItems = [logout];
 
   static const help =
       NavbarMenuItem(text: 'Help', icon: Icons.help_center_rounded);
   static const about =
       NavbarMenuItem(text: 'About', icon: Icons.info_outline_rounded);
-  static const logout = NavbarMenuItem(text: 'Log Out', icon: Icons.logout);
+  //static const logout = NavbarMenuItem(text: 'Log Out', icon: Icons.logout);
 
   static Widget buildItem(NavbarMenuItem item) {
     return Row(
@@ -49,9 +49,7 @@ class NavbarMenuItems {
       case NavbarMenuItems.about:
         Navigator.of(context).pushNamed('/help');
         break;
-      case NavbarMenuItems.logout:
-        Navigator.of(context).pushNamed('/cameras');
-        break;
+  
     }
   }
 }

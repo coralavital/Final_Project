@@ -1,4 +1,5 @@
 // imports
+import 'package:final_project/pages/auth/auth_gate.dart';
 import 'package:final_project/pages/lists/list_page.dart';
 import 'package:final_project/pages/account/account.dart';
 import 'package:final_project/pages/home/home_page.dart';
@@ -17,6 +18,7 @@ class RouteHelper {
   static const String listPage = '/list-page';
   static const String shoppingPage = '/shopping-page';
   static const String help = '/help';
+  static const String auth = '/auth';
 
   static String getSplash() => splash;
   static String getInitial() => initial;
@@ -24,6 +26,7 @@ class RouteHelper {
   static String getListPage() => listPage;
   static String getShoppingPage() => shoppingPage;
   static String getHelp() => help;
+  static String getAuth() => auth;
 
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -39,6 +42,13 @@ class RouteHelper {
       name: help,
       page: () {
         return const Help();
+      },
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: auth,
+      page: () {
+        return const AuthGate();
       },
       transition: Transition.fadeIn,
     ),
