@@ -258,6 +258,8 @@
 //    );
 //  }
 //}
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
 
@@ -268,23 +270,23 @@ class Account extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Stack(children: [
-      TopNavbar(
-        icon: const Icon(
-          Icons.list_rounded,
+    return Stack(
+      children: [
+        ProfileScreen(
+          actions: [
+            SignedOutAction((context) {
+              Navigator.of(context).pushNamed('/auth');
+            })
+          ],
+         
         ),
-      ),
-      ProfileScreen(
-        actions: [
-          SignedOutAction((context) {
-            Navigator.of(context).pushNamed('/auth');
-          })
-        ],
-        children: [
-          const Divider(),
-        ],
-      ),
-    ]));
+        
+        TopNavbar(
+          icon: const Icon(
+            Icons.list_rounded,
+          ),
+        ),
+      ],
+    );
   }
 }

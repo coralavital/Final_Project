@@ -47,9 +47,8 @@ class NavbarMenuItems {
         Navigator.of(context).pushNamed('/help');
         break;
       case NavbarMenuItems.about:
-        Navigator.of(context).pushNamed('/help');
+        Navigator.of(context).pushNamed('/about');
         break;
-  
     }
   }
 }
