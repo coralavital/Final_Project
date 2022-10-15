@@ -1,6 +1,7 @@
 // imports
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:final_project/pages/lists/shopping_list.dart';
+import 'package:final_project/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 import 'package:final_project/pages/lists/products_list.dart';
 import 'package:final_project/pages/home/main_page.dart';
@@ -60,33 +61,33 @@ class _HomePageState extends State<HomePage> {
         items: <BottomNavyBarItem>[
           BottomNavyBarItem(
               activeColor: AppColors.paraColor,
-              title: Text(
-                'Home',
-                style: TextStyle(color: AppColors.mainColor),
+              title: SmallText(
+                text: 'Home',
+                color: AppColors.mainColor,
               ),
               icon: Icon(Icons.home, color: AppColors.mainColor)),
           BottomNavyBarItem(
               activeColor: AppColors.paraColor,
-              title: Text(
-                'Expired',
-                style: TextStyle(color: AppColors.mainColor),
+              title: SmallText(
+                text: 'Product List',
+                color: AppColors.mainColor,
               ),
               icon: Icon(Icons.calendar_today_rounded,
                   color: AppColors.mainColor)),
           BottomNavyBarItem(
               activeColor: AppColors.paraColor,
-              title: Text(
-                'Shopping',
-                style: TextStyle(color: AppColors.mainColor),
+              title: SmallText(
+                text: 'Shopping List',
+                color: AppColors.mainColor,
               ),
               icon: Icon(Icons.shopping_cart_rounded,
                   color: AppColors.mainColor)),
           BottomNavyBarItem(
             activeColor: AppColors.paraColor,
-            title: Text(
-              'Me',
-              style: TextStyle(color: AppColors.mainColor),
-            ),
+           title: SmallText(
+                text: 'Me',
+                color: AppColors.mainColor,
+              ),
             icon:
                 Icon(Icons.account_circle_rounded, color: AppColors.mainColor),
           ),

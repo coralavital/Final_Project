@@ -43,28 +43,29 @@ class ShoppingPage extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         GestureDetector(
-                                        child: Container(
-                                          width: Dimensions.size20 * 5,
-                                          height: Dimensions.size20 * 5,
-                                          margin: EdgeInsets.only(
-                                            bottom: Dimensions.size10,
-                                            right: Dimensions.size30,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: AssetImage(
-                                                listController
-                                                    .getItems[index].img!,
+                                          child: Container(
+                                            width: Dimensions.size20 * 5,
+                                            height: Dimensions.size20 * 5,
+                                            margin: EdgeInsets.only(
+                                              bottom: Dimensions.size10,
+                                              right: Dimensions.size30,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                image: AssetImage(
+                                                  listController
+                                                      .getItems[index].img!,
+                                                ),
                                               ),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                Dimensions.size20,
+                                              ),
+                                              color: Colors.white,
                                             ),
-                                            borderRadius: BorderRadius.circular(
-                                              Dimensions.size20,
-                                            ),
-                                            color: Colors.white,
                                           ),
                                         ),
-                                      ),
                                         Expanded(
                                             child: SizedBox(
                                           height: Dimensions.size20 * 5,
@@ -72,15 +73,21 @@ class ShoppingPage extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              BigText(
-                                                text: listController
-                                                    .getItems[index].name!,
-                                                color: Colors.black54,
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  BigText(
+                                                    text: listController
+                                                        .getItems[index].name!,
+                                                    color: AppColors
+                                                        .mainBlackColor,
+                                                  ),
+                                                ],
                                               ),
                                               Row(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
+                                                    MainAxisAlignment.center,
                                                 children: [
                                                   Container(
                                                     padding: EdgeInsets.all(

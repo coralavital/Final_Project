@@ -128,7 +128,7 @@ class ListPage extends StatelessWidget {
                                                   ),
                                                   onPressed: () {},
                                                   child: SmallText(
-                                                    text: "Add to cart",
+                                                    text: "Add To Shopping List",
                                                     color: Colors.white,
                                                     size: Dimensions.size10,
                                                     fontWeight: FontWeight.w500,
