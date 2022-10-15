@@ -94,7 +94,7 @@ class ListController extends GetxController {
           img: "images/1343ce6cf6792383dfc071727afd5c46.jpeg",
           quantity: 3),
       ListModel(
-          id: 11,
+          id: 12,
           name: "Hilsha fish",
           img: "images/1343ce6cf6792383dfc071727afd5c46.jpeg",
           quantity: 4)
