@@ -4,15 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:final_project/base/no_data_page.dart';
 import 'package:final_project/controllers/list_controller.dart';
 import 'package:final_project/utils/colors.dart';
-import 'package:final_project/utils/constants.dart';
 import 'package:final_project/utils/dimensions.dart';
 import 'package:final_project/widgets/big_text.dart';
 import 'package:get/get.dart';
-import '../../controllers/product_controller.dart';
-import '../../routes/route_helper.dart';
 import '../../widgets/top_navbar.dart';
 
-// ListPage class
+// ShoppingPage class
 class ListPage extends StatelessWidget {
   const ListPage({Key? key}) : super(key: key);
   @override
@@ -55,15 +52,12 @@ class ListPage extends StatelessWidget {
                                           decoration: BoxDecoration(
                                             image: DecorationImage(
                                               fit: BoxFit.cover,
-                                              image: NetworkImage(
-                                                AppConstants.baseUrl +
-                                                    AppConstants.uploadUrl +
-                                                    listController
-                                                        .getItems[index].img!,
+                                              image: AssetImage(
+                                                listController
+                                                    .getItems[index].img!,
                                               ),
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(
+                                            borderRadius: BorderRadius.circular(
                                               Dimensions.size20,
                                             ),
                                             color: Colors.white,
@@ -86,8 +80,8 @@ class ListPage extends StatelessWidget {
                                                 BigText(
                                                   text: listController
                                                       .getItems[index].name!,
-                                                  color: AppColors
-                                                      .mainBlackColor,
+                                                  color:
+                                                      AppColors.mainBlackColor,
                                                 ),
                                               ],
                                             ),
@@ -95,6 +89,23 @@ class ListPage extends StatelessWidget {
                                               mainAxisAlignment:
                                                   MainAxisAlignment
                                                       .spaceBetween,
+                                              children: [
+                                                SmallText(
+                                                  text: "Expired Date:",
+                                                  textAlign: TextAlign.center,
+                                                  fontWeight: FontWeight.w500,
+                                                  size: Dimensions.size10,
+                                                ),
+                                                SmallText(
+                                                  text: "22/11/2023",
+                                                  textAlign: TextAlign.center,
+                                                  fontWeight: FontWeight.w400,
+                                                  size: Dimensions.size15,
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
                                               children: [
                                                 TextButton(
                                                   style: ButtonStyle(
@@ -111,8 +122,7 @@ class ListPage extends StatelessWidget {
                                                     ),
                                                     backgroundColor:
                                                         MaterialStateProperty
-                                                            .all<
-                                                                    Color>(
+                                                            .all<Color>(
                                                                 AppColors
                                                                     .mainColor),
                                                   ),
@@ -121,8 +131,7 @@ class ListPage extends StatelessWidget {
                                                     text: "Add to cart",
                                                     color: Colors.white,
                                                     size: Dimensions.size10,
-                                                    fontWeight:
-                                                        FontWeight.w500,
+                                                    fontWeight: FontWeight.w500,
                                                   ),
                                                 )
                                               ],

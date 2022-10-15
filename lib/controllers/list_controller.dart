@@ -90,13 +90,13 @@ class ListController extends GetxController {
     return [
       ListModel(
           id: 11,
-          name: "Hilsha fish",
-          img: "images/1343ce6cf6792383dfc071727afd5c46.jpeg",
+          name: "Milk",
+          img: "assets/image/Milk.jpg",
           quantity: 3),
       ListModel(
           id: 12,
-          name: "Hilsha fish",
-          img: "images/1343ce6cf6792383dfc071727afd5c46.jpeg",
+          name: "Egg",
+          img: "assets/image/Egg.jpg",
           quantity: 4)
     ];
   }

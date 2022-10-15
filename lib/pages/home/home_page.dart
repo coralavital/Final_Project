@@ -1,8 +1,8 @@
 // imports
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'package:final_project/pages/lists/shopping_page.dart';
+import 'package:final_project/pages/lists/shopping_list.dart';
 import 'package:flutter/material.dart';
-import 'package:final_project/pages/lists/list_page.dart';
+import 'package:final_project/pages/lists/products_list.dart';
 import 'package:final_project/pages/home/main_page.dart';
 import 'package:final_project/utils/colors.dart';
 import '../account/account.dart';
@@ -46,7 +46,6 @@ class _HomePageState extends State<HomePage> {
             MainPage(),
             ListPage(),
             ShoppingPage(),
-            ShoppingPage(),
             Account(),
           ],
         ),
@@ -66,13 +65,6 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(color: AppColors.mainColor),
               ),
               icon: Icon(Icons.home, color: AppColors.mainColor)),
-          BottomNavyBarItem(
-              activeColor: AppColors.paraColor,
-              title: Text(
-                'Product',
-                style: TextStyle(color: AppColors.mainColor),
-              ),
-              icon: Icon(Icons.list_alt_rounded, color: AppColors.mainColor)),
           BottomNavyBarItem(
               activeColor: AppColors.paraColor,
               title: Text(

@@ -25,7 +25,7 @@ class ShoppingPage extends StatelessWidget {
                 ? Positioned(
                     top: Dimensions.size20 * 4.5,
                     left: Dimensions.size20,
-                    right: Dimensions.size20,
+                    right: Dimensions.size50,
                     bottom: 0,
                     child: Container(
                       child: MediaQuery.removePadding(
@@ -43,39 +43,34 @@ class ShoppingPage extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         GestureDetector(
-                                          child: Container(
-                                            width: Dimensions.size20 * 7,
-                                            height: Dimensions.size20 * 5,
-                                            margin: EdgeInsets.only(
-                                              bottom: Dimensions.size10,
-                                              right: Dimensions.size10,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                fit: BoxFit.cover,
-                                                image: NetworkImage(
-                                                  AppConstants.baseUrl +
-                                                      AppConstants.uploadUrl +
-                                                      listController
-                                                          .getItems[index].img!,
-                                                ),
+                                        child: Container(
+                                          width: Dimensions.size20 * 5,
+                                          height: Dimensions.size20 * 5,
+                                          margin: EdgeInsets.only(
+                                            bottom: Dimensions.size10,
+                                            right: Dimensions.size30,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: AssetImage(
+                                                listController
+                                                    .getItems[index].img!,
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                Dimensions.size20,
-                                              ),
-                                              color: Colors.white,
                                             ),
+                                            borderRadius: BorderRadius.circular(
+                                              Dimensions.size20,
+                                            ),
+                                            color: Colors.white,
                                           ),
                                         ),
+                                      ),
                                         Expanded(
                                             child: SizedBox(
                                           height: Dimensions.size20 * 5,
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
                                             children: [
                                               BigText(
                                                 text: listController

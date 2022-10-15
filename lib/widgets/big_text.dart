@@ -7,6 +7,7 @@ class BigText extends StatelessWidget {
   final Color? color;
   final String text;
   final FontWeight fontWeight;
+  final TextAlign? textAlign;
   double size;
   TextOverflow overflow;
   BigText({
@@ -16,6 +17,7 @@ class BigText extends StatelessWidget {
     required this.text,
     this.overflow = TextOverflow.ellipsis,
     this.size = 0,
+    this.textAlign = TextAlign.start,
   }) : super(key: key);
 
   @override

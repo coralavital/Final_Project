@@ -1,9 +1,9 @@
 // imports
 import 'package:final_project/pages/auth/auth_gate.dart';
-import 'package:final_project/pages/lists/list_page.dart';
+import 'package:final_project/pages/lists/products_list.dart';
 import 'package:final_project/pages/account/account.dart';
 import 'package:final_project/pages/home/home_page.dart';
-import 'package:final_project/pages/lists/shopping_page.dart';
+import 'package:final_project/pages/lists/shopping_list.dart';
 import 'package:final_project/pages/menu_item/about.dart';
 import 'package:final_project/pages/splash/splash_page.dart';
 import 'package:get/get.dart';
