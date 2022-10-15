@@ -13,6 +13,7 @@ import 'package:get/get.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
+    name: 'FridgeIT',
    options: DefaultFirebaseOptions.currentPlatform,
  );
   await dep.init();
@@ -21,7 +22,6 @@ Future<void> main() async {
 
 // MyApp class
 class MyApp extends StatelessWidget {
-  final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
 
   MyApp({Key? key}) : super(key: key);
   @override
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
     return GetBuilder<PopularProductController>(builder: (_) {
       return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
+          title: 'FridgeIT',
           theme: ThemeData(
             primarySwatch: Colors.teal,
           ),

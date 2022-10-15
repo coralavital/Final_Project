@@ -49,7 +49,7 @@ class _AboutPageState extends State<About> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   BigText(
-                    text: "About FridgeIT",
+                    text: "About flutter_application_1",
                     size: Dimensions.size30,
                     color: AppColors.titleColor,
                     fontWeight: FontWeight.w900,
@@ -61,7 +61,7 @@ class _AboutPageState extends State<About> {
                     textAlign: TextAlign.center,
                     size: Dimensions.size15,
                     text:
-                        "At FridgeIT, we're building new and innovative ways to help people understand and talk about sustainability"
+                        "At flutter_application_1, we're building new and innovative ways to help people understand and talk about sustainability"
                         "and the makeup of our company reflects the diverse perspectives of the people who use our technologies."
                         "The product is designed to record products that are in the refrigerator and in addition to allow products to be scanned in"
                         "order to get the expiration date of products and to help people keep track of the products they have and the expiration date of these products.",

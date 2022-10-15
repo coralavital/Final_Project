@@ -5,6 +5,8 @@ import 'package:final_project/utils/dimensions.dart';
 import 'package:final_project/widgets/big_text.dart';
 import 'package:final_project/widgets/top_navbar.dart';
 
+import '../../widgets/small_text.dart';
+
 // Account class
 class Help extends StatefulWidget {
   const Help({
@@ -53,12 +55,35 @@ class _HelpPageState extends State<Help> {
                     color: AppColors.titleColor,
                     fontWeight: FontWeight.w900,
                   ),
+                  SizedBox(
+                    height: Dimensions.size15,
+                  ),
+                  SmallText(
+                      textAlign: TextAlign.center,
+                      size: Dimensions.size20,
+                      fontWeight: FontWeight.bold,
+                      text: "Home Page"),
+                  SmallText(
+                      textAlign: TextAlign.center,
+                      size: Dimensions.size20,
+                      text:
+                          "On the home page you can watch the contents of your refrigerator live"),
+                  SizedBox(
+                    height: Dimensions.size15,
+                  ),
+                  SmallText(
+                      textAlign: TextAlign.center,
+                      size: Dimensions.size20,
+                      fontWeight: FontWeight.bold,
+                      text: "Personal Area"),
+                  SmallText(
+                      textAlign: TextAlign.center,
+                      size: Dimensions.size20,
+                      text:
+                          "In the personal area you can view your user's details and perform actions such as changing the password, logging out of the system and deleting the account"),
                 ],
               ),
             ),
-          ),
-          const Positioned(
-            child: Text(""),
           ),
         ],
       ),

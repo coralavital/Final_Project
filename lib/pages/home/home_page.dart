@@ -69,22 +69,22 @@ class _HomePageState extends State<HomePage> {
           BottomNavyBarItem(
               activeColor: AppColors.paraColor,
               title: Text(
-                'Product List',
+                'Product',
                 style: TextStyle(color: AppColors.mainColor),
               ),
               icon: Icon(Icons.list_alt_rounded, color: AppColors.mainColor)),
           BottomNavyBarItem(
               activeColor: AppColors.paraColor,
               title: Text(
-                'Shopping List',
+                'Expired',
                 style: TextStyle(color: AppColors.mainColor),
               ),
-              icon: Icon(Icons.shopping_cart_rounded,
+              icon: Icon(Icons.calendar_today_rounded,
                   color: AppColors.mainColor)),
           BottomNavyBarItem(
               activeColor: AppColors.paraColor,
               title: Text(
-                'Expired List',
+                'Shopping',
                 style: TextStyle(color: AppColors.mainColor),
               ),
               icon: Icon(Icons.shopping_cart_rounded,

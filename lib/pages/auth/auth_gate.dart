@@ -15,16 +15,18 @@ class AuthGate extends StatelessWidget {
           return SignInScreen(
             providerConfigs: const [
               EmailProviderConfiguration(),
-              GoogleProviderConfiguration(
-                  clientId:
-                      "749600160177-kst1cgf4ml8nan3tiet2ncshq4b9njrb.apps.googleusercontent.com"),
+              //GoogleProviderConfiguration(
+              //    clientId:
+              //        "749600160177-kst1cgf4ml8nan3tiet2ncshq4b9njrb.apps.googleusercontent.com"),
             ],
             subtitleBuilder: (context, action) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: action == AuthAction.signIn
-                    ? const Text('Welcome to FlutterFire, please sign in!')
-                    : const Text('Welcome to Flutterfire, please sign up!'),
+                    ? const Text(
+                        'Welcome to flutter_application_1, please sign in!')
+                    : const Text(
+                        'Welcome to flutter_application_1, please sign up!'),
               );
             },
             footerBuilder: (context, action) {

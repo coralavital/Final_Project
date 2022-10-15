@@ -29,50 +29,55 @@ class TopNavbar extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    BigText(text: 'FridgeIT', color: AppColors.mainColor),
+                    BigText(
+                        text: 'FridgeIT',
+                        color: AppColors.mainColor),
                   ],
                 ),
                 Column(
                   children: [
-                    DropdownButton2(
-                      customButton: Icon(Icons.list_rounded,
-                          size: Dimensions.size30, color: AppColors.mainColor),
-                      customItemsIndexes: const [4],
-                      customItemsHeight: Dimensions.size20,
-                      items: [
-                        ...NavbarMenuItems.firstItems.map(
-                          (item) => DropdownMenuItem<NavbarMenuItem>(
-                            value: item,
-                            child: NavbarMenuItems.buildItem(item),
+                    DropdownButtonHideUnderline(
+                      child: DropdownButton2(
+                        customButton: Icon(Icons.list,
+                            size: Dimensions.size30,
+                            color: AppColors.mainColor),
+                        customItemsIndexes: const [2],
+                        customItemsHeight: Dimensions.size20,
+                        items: [
+                          ...NavbarMenuItems.firstItems.map(
+                            (item) => DropdownMenuItem<NavbarMenuItem>(
+                              value: item,
+                              child: NavbarMenuItems.buildItem(item),
+                            ),
                           ),
-                        ),
-                        const DropdownMenuItem<Divider>(
-                            enabled: false, child: Divider()),
-                        ...NavbarMenuItems.secondItems.map(
-                          (item) => DropdownMenuItem<NavbarMenuItem>(
-                            value: item,
-                            child: NavbarMenuItems.buildItem(item),
+                          const DropdownMenuItem<Divider>(
+                              enabled: false, child: Divider()),
+                          ...NavbarMenuItems.secondItems.map(
+                            (item) => DropdownMenuItem<NavbarMenuItem>(
+                              value: item,
+                              child: NavbarMenuItems.buildItem(item),
+                            ),
                           ),
+                        ],
+                        onChanged: (value) {
+                          NavbarMenuItems.onChanged(
+                              context, value as NavbarMenuItem);
+                        },
+                        itemHeight: Dimensions.size15,
+                        itemPadding: EdgeInsets.only(
+                            left: Dimensions.size15, right: Dimensions.size15),
+                        dropdownWidth: Dimensions.size120,
+                        dropdownMaxHeight: Dimensions.size150,
+                        dropdownPadding: EdgeInsets.symmetric(
+                          vertical: Dimensions.size15,
                         ),
-                      ],
-                      onChanged: (value) {
-                        NavbarMenuItems.onChanged(
-                            context, value as NavbarMenuItem);
-                      },
-                      itemHeight: Dimensions.size15,
-                      itemPadding: EdgeInsets.only(
-                          left: Dimensions.size15, right: Dimensions.size15),
-                      dropdownWidth: Dimensions.size120,
-                      dropdownMaxHeight: Dimensions.size150,
-                      dropdownPadding: EdgeInsets.symmetric(
-                        vertical: Dimensions.size15,
+                        dropdownDecoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          color: AppColors.mainColor,
+                        ),
+                        dropdownElevation: 8,
+                        offset: const Offset(0, 8),
                       ),
-                      dropdownDecoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        color: AppColors.mainColor,
-                      ),
-                      dropdownElevation: 8,
-                      offset: const Offset(2, 8),
                     ),
                   ],
                 ),

@@ -47,10 +47,11 @@ class DefaultFirebaseOptions {
     apiKey: 'AIzaSyCMSlFScm33QgC8L2a3fVfHam4l4cTaJlo',
     appId: '1:749600160177:web:1320d8df961336b5776590',
     messagingSenderId: '749600160177',
-    projectId: 'fridgeit-d17ae',
-    authDomain: 'fridgeit-d17ae.firebaseapp.com',
-    databaseURL: 'https://fridgeit-d17ae-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'fridgeit-d17ae.appspot.com',
+    projectId: 'flutter_application_1-d17ae',
+    authDomain: 'flutter_application_1-d17ae.firebaseapp.com',
+    databaseURL:
+        'https://flutter_application_1-d17ae-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'flutter_application_1-d17ae.appspot.com',
     measurementId: 'G-V0F5B5DH5X',
   );
 
@@ -58,19 +59,22 @@ class DefaultFirebaseOptions {
     apiKey: 'AIzaSyCxFSm_WxEHXsNYXAOs_AQsVFMgR9O-WwU',
     appId: '1:749600160177:android:75733f091a734963776590',
     messagingSenderId: '749600160177',
-    projectId: 'fridgeit-d17ae',
-    databaseURL: 'https://fridgeit-d17ae-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'fridgeit-d17ae.appspot.com',
+    projectId: 'flutter_application_1-d17ae',
+    databaseURL:
+        'https://flutter_application_1-d17ae-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'flutter_application_1-d17ae.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCFtvpxiwJzy0mdIBD9LVpsqUrbzJBPLwE',
     appId: '1:749600160177:ios:05438585f24d1959776590',
     messagingSenderId: '749600160177',
-    projectId: 'fridgeit-d17ae',
-    databaseURL: 'https://fridgeit-d17ae-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'fridgeit-d17ae.appspot.com',
-    iosClientId: '749600160177-35i3u32o4cedjk515e9tu4tlvd42a1gl.apps.googleusercontent.com',
+    projectId: 'flutter_application_1-d17ae',
+    databaseURL:
+        'https://flutter_application_1-d17ae-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'flutter_application_1-d17ae.appspot.com',
+    iosClientId:
+        '749600160177-35i3u32o4cedjk515e9tu4tlvd42a1gl.apps.googleusercontent.com',
     iosBundleId: 'com.example.flutterApplication1',
   );
 
@@ -78,10 +82,12 @@ class DefaultFirebaseOptions {
     apiKey: 'AIzaSyCFtvpxiwJzy0mdIBD9LVpsqUrbzJBPLwE',
     appId: '1:749600160177:ios:05438585f24d1959776590',
     messagingSenderId: '749600160177',
-    projectId: 'fridgeit-d17ae',
-    databaseURL: 'https://fridgeit-d17ae-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'fridgeit-d17ae.appspot.com',
-    iosClientId: '749600160177-35i3u32o4cedjk515e9tu4tlvd42a1gl.apps.googleusercontent.com',
+    projectId: 'flutter_application_1-d17ae',
+    databaseURL:
+        'https://flutter_application_1-d17ae-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'flutter_application_1-d17ae.appspot.com',
+    iosClientId:
+        '749600160177-35i3u32o4cedjk515e9tu4tlvd42a1gl.apps.googleusercontent.com',
     iosBundleId: 'com.example.flutterApplication1',
   );
 }

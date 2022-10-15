@@ -30,113 +30,111 @@ class ListPage extends StatelessWidget {
                     left: Dimensions.size20,
                     right: Dimensions.size20,
                     bottom: 0,
-                    child: Container(
-                      child: MediaQuery.removePadding(
-                          context: context,
-                          removeTop: true,
-                          child: GetBuilder<ListController>(
-                              builder: (listController) {
-                            var _list = listController.getItems;
-                            return ListView.builder(
-                                itemCount: _list.length,
-                                itemBuilder: (_, index) {
-                                  return SizedBox(
-                                    height: Dimensions.size20 * 5,
-                                    width: double.maxFinite,
-                                    child: Row(
-                                      children: [
-                                        GestureDetector(
-                                          child: Container(
-                                            width: Dimensions.size20 * 5,
-                                            height: Dimensions.size20 * 5,
-                                            margin: EdgeInsets.only(
-                                              bottom: Dimensions.size10,
-                                              right: Dimensions.size10,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                fit: BoxFit.cover,
-                                                image: NetworkImage(
-                                                  AppConstants.baseUrl +
-                                                      AppConstants.uploadUrl +
-                                                      listController
-                                                          .getItems[index].img!,
-                                                ),
+                    child: MediaQuery.removePadding(
+                        context: context,
+                        removeTop: true,
+                        child: GetBuilder<ListController>(
+                            builder: (listController) {
+                          var _list = listController.getItems;
+                          return ListView.builder(
+                              itemCount: _list.length,
+                              itemBuilder: (_, index) {
+                                return SizedBox(
+                                  height: Dimensions.size20 * 5,
+                                  width: double.maxFinite,
+                                  child: Row(
+                                    children: [
+                                      GestureDetector(
+                                        child: Container(
+                                          width: Dimensions.size20 * 5,
+                                          height: Dimensions.size20 * 5,
+                                          margin: EdgeInsets.only(
+                                            bottom: Dimensions.size10,
+                                            right: Dimensions.size10,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: NetworkImage(
+                                                AppConstants.baseUrl +
+                                                    AppConstants.uploadUrl +
+                                                    listController
+                                                        .getItems[index].img!,
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                Dimensions.size20,
-                                              ),
-                                              color: Colors.white,
                                             ),
+                                            borderRadius:
+                                                BorderRadius.circular(
+                                              Dimensions.size20,
+                                            ),
+                                            color: Colors.white,
                                           ),
                                         ),
-                                        Expanded(
-                                            child: SizedBox(
-                                          height: Dimensions.size20 * 5,
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  BigText(
-                                                    text: listController
-                                                        .getItems[index].name!,
-                                                    color: AppColors
-                                                        .mainBlackColor,
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  TextButton(
-                                                    style: ButtonStyle(
-                                                      shape: MaterialStateProperty
-                                                          .all<
-                                                              RoundedRectangleBorder>(
-                                                        RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      Dimensions
-                                                                          .size20),
-                                                        ),
+                                      ),
+                                      Expanded(
+                                          child: SizedBox(
+                                        height: Dimensions.size20 * 5,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                BigText(
+                                                  text: listController
+                                                      .getItems[index].name!,
+                                                  color: AppColors
+                                                      .mainBlackColor,
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                TextButton(
+                                                  style: ButtonStyle(
+                                                    shape: MaterialStateProperty
+                                                        .all<
+                                                            RoundedRectangleBorder>(
+                                                      RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                    Dimensions
+                                                                        .size20),
                                                       ),
-                                                      backgroundColor:
-                                                          MaterialStateProperty
-                                                              .all<
-                                                                      Color>(
-                                                                  AppColors
-                                                                      .mainColor),
                                                     ),
-                                                    onPressed: () {},
-                                                    child: SmallText(
-                                                      text: "Add to cart",
-                                                      color: Colors.white,
-                                                      size: Dimensions.size10,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ))
-                                      ],
-                                    ),
-                                  );
-                                });
-                          })),
-                    ),
+                                                    backgroundColor:
+                                                        MaterialStateProperty
+                                                            .all<
+                                                                    Color>(
+                                                                AppColors
+                                                                    .mainColor),
+                                                  ),
+                                                  onPressed: () {},
+                                                  child: SmallText(
+                                                    text: "Add to cart",
+                                                    color: Colors.white,
+                                                    size: Dimensions.size10,
+                                                    fontWeight:
+                                                        FontWeight.w500,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ))
+                                    ],
+                                  ),
+                                );
+                              });
+                        })),
                   )
                 : const NoDataPage(text: 'Your list is empty.');
           }),
