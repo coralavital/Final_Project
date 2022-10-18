@@ -12,7 +12,7 @@ class ListRepo {
   List<String> list = [];
 
   void addToCartList(List<ListModel> cartList) {
-    // sharedPreferences.remove(AppConstants.cartList);
+
     list = [];
     var time = DateTime.now().toString();
     for (var element in cartList) {
@@ -20,7 +20,6 @@ class ListRepo {
       continue;
     }
     sharedPreferences.setStringList(AppConstants.cartList, list);
-    //print(sharedPreferences.getStringList(AppConstants.cartList));
   }
 
   List<ListModel> getCartList() {

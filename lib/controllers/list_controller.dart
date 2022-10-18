@@ -1,10 +1,9 @@
-// imports
+import 'package:final_project/data/repository/list_repo.dart';
+import 'package:final_project/models/list_model.dart';
 import 'package:final_project/models/product_model.dart';
 import 'package:get/get.dart';
-import '../data/repository/list_repo.dart';
-import '../models/list_model.dart';
 
-// ListController class
+
 class ListController extends GetxController {
   final ListRepo listRepo;
   ListController({required this.listRepo});
@@ -55,7 +54,7 @@ class ListController extends GetxController {
     update();
   }
 
-  bool existInCartList(ProductModel product) {
+  bool existInCart(ProductModel product) {
     if (_items.containsKey(product.id)) {
       return true;
     } else {
@@ -87,6 +86,7 @@ class ListController extends GetxController {
     //return _items.entries.map((e) {
     //  return e.value;
     //}).toList();
+        //}).toList();
     return [
       ListModel(
           id: 11,
@@ -113,16 +113,11 @@ class ListController extends GetxController {
     return storageItems;
   }
 
-  set setList(List<ListModel> items) {
+  set setCart(List<ListModel> items) {
     storageItems = items;
     for (int i = 0; i < storageItems.length; i++) {
       _items.putIfAbsent(storageItems[i].product!.id!, () => storageItems[i]);
     }
-  }
-
-  void clear() {
-    _items = {};
-    update();
   }
 
   set setItems(Map<int, ListModel> setItems) {
