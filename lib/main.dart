@@ -12,17 +12,17 @@ import 'package:get/get.dart';
 // main function
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    name: 'FridgeIT',
-   options: DefaultFirebaseOptions.currentPlatform,
- );
+//  await Firebase.initializeApp(
+//    name: 'FridgeIT',
+//   options: DefaultFirebaseOptions.currentPlatform,
+// );
   await dep.init();
   runApp(MyApp());
 }
 
 // MyApp class
 class MyApp extends StatelessWidget {
-
+  final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
   MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -36,8 +36,20 @@ class MyApp extends StatelessWidget {
           ),
           initialRoute: RouteHelper.getSplash(),
           getPages: RouteHelper.routes,
-          home: const AuthGate(),
-          );
+          home: FutureBuilder(
+              future: _fbApp,
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  print('');
+                  return Text('');
+                } else if (snapshot.hasData) {
+                  return const AuthGate();
+                } else {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              }));
     });
   }
 }
