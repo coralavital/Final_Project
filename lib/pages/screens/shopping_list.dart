@@ -168,7 +168,7 @@ class _ShoppingPage extends State<ShoppingPage> {
                                   ),
                                 );
                               })))
-                  : const NoDataPage(text: 'Your list is empty.')
+                  : const NoDataPage(text: 'Your cart is empty.')
             ],
           ),
         );

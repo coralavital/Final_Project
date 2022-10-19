@@ -1,12 +1,9 @@
 // imports
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:final_project/utils/colors.dart';
 import 'package:final_project/utils/constants.dart';
 import 'package:final_project/utils/dimensions.dart';
-import 'package:get/get.dart';
+
 import '../../models/product_model.dart';
-import '../../widgets/small_text.dart';
 
 // FoodPageBody class
 class MainPageBody extends StatefulWidget {

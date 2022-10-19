@@ -142,7 +142,8 @@ class _ListPage extends State<ListPage> {
                                                 (shoppingList
                                                             .toString()
                                                             .contains(doc[index]
-                                                                ['name']) == false)
+                                                                ['name']) ==
+                                                        false)
                                                     ? TextButton(
                                                         style: ButtonStyle(
                                                           shape: MaterialStateProperty
@@ -168,6 +169,8 @@ class _ListPage extends State<ListPage> {
                                                               doc[index]
                                                                   ['image'],
                                                               1);
+
+                                                          initialize();
                                                         },
                                                         child: SmallText(
                                                           text:

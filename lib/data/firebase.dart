@@ -75,7 +75,10 @@ class Database {
   Future<void> addToShoppingList(
       String name, String image, int quantity) async {
     try {
-      await firestore.collection('${auth.currentUser?.uid}').doc("Camera_1").update(
+      await firestore
+          .collection('${auth.currentUser?.uid}')
+          .doc("Camera_1")
+          .update(
         {
           'shopping_list': FieldValue.arrayUnion([
             {"name": name, "image": image, "quantity": quantity}
@@ -90,7 +93,10 @@ class Database {
   Future<void> addItem(List doc, int index) async {
     doc.elementAt(index)['quantity'] += 1;
     try {
-      await firestore.collection('${auth.currentUser?.uid}').doc("Camera_1").update(
+      await firestore
+          .collection('${auth.currentUser?.uid}')
+          .doc("Camera_1")
+          .update(
         {'shopping_list': doc},
       );
     } catch (e) {
@@ -102,7 +108,10 @@ class Database {
     doc.elementAt(index)['quantity'] -= 1;
     if (doc.elementAt(index)['quantity'] > 0) {
       try {
-        await firestore.collection('${auth.currentUser?.uid}').doc("Camera_1").update(
+        await firestore
+            .collection('${auth.currentUser?.uid}')
+            .doc("Camera_1")
+            .update(
           {'shopping_list': doc},
         );
       } catch (e) {
@@ -111,7 +120,10 @@ class Database {
     } else if (doc.elementAt(index)['quantity'] <= 0) {
       doc.remove(doc.elementAt(index));
       try {
-        await firestore.collection('${auth.currentUser?.uid}').doc("Camera_1").update(
+        await firestore
+            .collection('${auth.currentUser?.uid}')
+            .doc("Camera_1")
+            .update(
           {'shopping_list': doc},
         );
       } catch (e) {
