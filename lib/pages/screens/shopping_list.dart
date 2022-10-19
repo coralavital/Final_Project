@@ -45,7 +45,7 @@ class _ShoppingPage extends State<ShoppingPage> {
               TopNavbar(
                 icon: const Icon(Icons.list_rounded),
               ),
-              doc != []
+              doc.isNotEmpty
                   ? Positioned(
                       top: Dimensions.size20 * 4.5,
                       left: Dimensions.size20,
