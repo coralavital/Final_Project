@@ -1,39 +1,61 @@
-// imports
-import 'package:final_project/controllers/list_controller.dart';
-import 'package:final_project/base/no_data_page.dart';
-import 'package:final_project/utils/dimensions.dart';
-import 'package:final_project/widgets/big_text.dart';
-import 'package:final_project/utils/colors.dart';
-import '../../widgets/top_navbar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import '../../widgets/top_navbar.dart';
+import '../../base/no_data_page.dart';
+import '../../utils/dimensions.dart';
+import '../../widgets/big_text.dart';
+import '../../data/firebase.dart';
+import '../../utils/colors.dart';
 
-// ShoppingPage class
-class ShoppingPage extends StatelessWidget {
+class ShoppingPage extends StatefulWidget {
   const ShoppingPage({Key? key}) : super(key: key);
+
+  @override
+  _ShoppingPage createState() => _ShoppingPage();
+}
+
+class _ShoppingPage extends State<ShoppingPage> {
+  late Database db;
+  List doc = [];
+  initialize() {
+    db = Database();
+    db.initialize();
+    db.readShoppingList().then((value) => {
+          setState(() {
+            doc = value;
+          })
+        });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initialize();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          TopNavbar(
-            icon: const Icon(Icons.list_rounded),
-          ),
-          GetBuilder<ListController>(builder: (listController) {
-            return listController.getItems.isNotEmpty
-                ? Positioned(
-                    top: Dimensions.size20 * 4.5,
-                    left: Dimensions.size20,
-                    right: Dimensions.size50,
-                    bottom: 0,
-                    child: MediaQuery.removePadding(
-                        context: context,
-                        removeTop: true,
-                        child: GetBuilder<ListController>(
-                            builder: (listController) {
-                          var _list = listController.getItems;
-                          return ListView.builder(
-                              itemCount: _list.length,
+    return StreamBuilder(
+      stream: FirebaseFirestore.instance.collection('Cameras').snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (!snapshot.hasData) return new Text('Loading...');
+        return Scaffold(
+          body: Stack(
+            children: [
+              TopNavbar(
+                icon: const Icon(Icons.list_rounded),
+              ),
+              doc != []
+                  ? Positioned(
+                      top: Dimensions.size20 * 4.5,
+                      left: Dimensions.size20,
+                      right: Dimensions.size50,
+                      bottom: 0,
+                      child: MediaQuery.removePadding(
+                          context: context,
+                          removeTop: true,
+                          child: ListView.builder(
+                              itemCount: doc.length,
                               itemBuilder: (_, index) {
                                 return SizedBox(
                                   height: Dimensions.size20 * 5,
@@ -50,12 +72,9 @@ class ShoppingPage extends StatelessWidget {
                                           ),
                                           decoration: BoxDecoration(
                                             image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: AssetImage(
-                                                listController
-                                                    .getItems[index].img!,
-                                              ),
-                                            ),
+                                                fit: BoxFit.cover,
+                                                image: NetworkImage(
+                                                    doc[index]['image'])),
                                             borderRadius: BorderRadius.circular(
                                               Dimensions.size20,
                                             ),
@@ -75,8 +94,7 @@ class ShoppingPage extends StatelessWidget {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 BigText(
-                                                  text: listController
-                                                      .getItems[index].name!,
+                                                  text: doc[index]['name'],
                                                   color:
                                                       AppColors.mainBlackColor,
                                                 ),
@@ -104,11 +122,8 @@ class ShoppingPage extends StatelessWidget {
                                                     children: [
                                                       GestureDetector(
                                                         onTap: () {
-                                                          listController
-                                                              .addItem(
-                                                                  _list[index]
-                                                                      .product!,
-                                                                  -1);
+                                                          db.removeItem(
+                                                              doc, index);
                                                         },
                                                         child: Icon(
                                                           Icons.remove,
@@ -123,18 +138,15 @@ class ShoppingPage extends StatelessWidget {
                                                           horizontal: 5.0,
                                                         ),
                                                         child: BigText(
-                                                          text: _list[index]
-                                                              .quantity
+                                                          text: doc[index]
+                                                                  ['quantity']
                                                               .toString(),
                                                         ),
                                                       ),
                                                       GestureDetector(
                                                         onTap: () {
-                                                          listController
-                                                              .addItem(
-                                                                  _list[index]
-                                                                      .product!,
-                                                                  1);
+                                                          db.addItem(
+                                                              doc, index);
                                                         },
                                                         child: Icon(
                                                           Icons.add,
@@ -153,13 +165,12 @@ class ShoppingPage extends StatelessWidget {
                                     ],
                                   ),
                                 );
-                              });
-                        })),
-                  )
-                : const NoDataPage(text: 'Your list is empty.');
-          }),
-        ],
-      ),
+                              })))
+                  : const NoDataPage(text: 'Your list is empty.')
+            ],
+          ),
+        );
+      },
     );
   }
 }

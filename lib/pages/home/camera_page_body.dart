@@ -1,7 +1,6 @@
 // imports
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:final_project/controllers/product_controller.dart';
 import 'package:final_project/utils/colors.dart';
 import 'package:final_project/utils/constants.dart';
 import 'package:final_project/utils/dimensions.dart';
@@ -42,36 +41,36 @@ class _MainPageBodyState extends State<MainPageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        GetBuilder<PopularProductController>(builder: (popularProducts) {
-          return popularProducts.isLoaded
-              ? SizedBox(
-                  height: Dimensions.size530,
-                  child: PageView.builder(
-                      controller: pageController,
-                      // itemCount for two cameras
-                      itemCount: 2,
-                      itemBuilder: (context, position) {
-                        return _buildPageItem(position,
-                            popularProducts.popularProductList[position]);
-                      }),
-                )
-              : CircularProgressIndicator(
-                  color: AppColors.mainColor,
-                );
-        }),
-        GetBuilder<PopularProductController>(builder: (popularProducts) {
-          return DotsIndicator(
-            dotsCount: popularProducts.popularProductList.isEmpty ? 1 : 2,
-            position: _currentPageValue,
-            decorator: DotsDecorator(
-              activeColor: AppColors.paraColor,
-              size: Size.square(Dimensions.size10),
-              activeSize: const Size(18.0, 9.0),
-              activeShape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(Dimensions.size5)),
-            ),
-          );
-        }),
+        //GetBuilder<PopularProductController>(builder: (popularProducts) {
+        //  return popularProducts.isLoaded
+        //      ? SizedBox(
+        //          height: Dimensions.size530,
+        //          child: PageView.builder(
+        //              controller: pageController,
+        //              // itemCount for two cameras
+        //              itemCount: 2,
+        //              itemBuilder: (context, position) {
+        //                return _buildPageItem(position,
+        //                    popularProducts.popularProductList[position]);
+        //              }),
+        //        )
+        //      : CircularProgressIndicator(
+        //          color: AppColors.mainColor,
+        //        );
+        //}),
+        //GetBuilder<PopularProductController>(builder: (popularProducts) {
+        //  return DotsIndicator(
+        //    dotsCount: popularProducts.popularProductList.isEmpty ? 1 : 2,
+        //    position: _currentPageValue,
+        //    decorator: DotsDecorator(
+        //      activeColor: AppColors.paraColor,
+        //      size: Size.square(Dimensions.size10),
+        //      activeSize: const Size(18.0, 9.0),
+        //      activeShape: RoundedRectangleBorder(
+        //          borderRadius: BorderRadius.circular(Dimensions.size5)),
+        //    ),
+        //  );
+        //}),
       ],
     );
   }

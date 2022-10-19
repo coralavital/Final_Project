@@ -1,9 +1,9 @@
 // imports
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'package:final_project/pages/lists/shopping_list.dart';
+import 'package:final_project/pages/screens/shopping_list.dart';
 import 'package:final_project/widgets/small_text.dart';
 import 'package:flutter/material.dart';
-import 'package:final_project/pages/lists/products_list.dart';
+import 'package:final_project/pages/screens/products_list.dart';
 import 'package:final_project/pages/home/main_page.dart';
 import 'package:final_project/utils/colors.dart';
 import '../account/account.dart';
@@ -43,11 +43,11 @@ class _HomePageState extends State<HomePage> {
           onPageChanged: (index) {
             setState(() => _currentIndex = index);
           },
-          children: const <Widget>[
-            MainPage(),
+          children: <Widget>[
+            const MainPage(),
             ListPage(),
             ShoppingPage(),
-            Account(),
+            const Account(),
           ],
         ),
       ),

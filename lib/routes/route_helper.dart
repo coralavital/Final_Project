@@ -1,9 +1,9 @@
 // imports
 import 'package:final_project/pages/auth/auth_gate.dart';
-import 'package:final_project/pages/lists/products_list.dart';
+import 'package:final_project/pages/screens/products_list.dart';
 import 'package:final_project/pages/account/account.dart';
 import 'package:final_project/pages/home/home_page.dart';
-import 'package:final_project/pages/lists/shopping_list.dart';
+import 'package:final_project/pages/screens/shopping_list.dart';
 import 'package:final_project/pages/menu_item/about.dart';
 import 'package:final_project/pages/splash/splash_page.dart';
 import 'package:get/get.dart';
@@ -65,14 +65,14 @@ class RouteHelper {
     GetPage(
       name: listPage,
       page: () {
-        return const ListPage();
+        return ListPage();
       },
       transition: Transition.fadeIn,
     ),
     GetPage(
         name: shoppingPage,
         page: () {
-          return const ShoppingPage();
+          return ShoppingPage();
         },
         transition: Transition.fadeIn),
   ];
