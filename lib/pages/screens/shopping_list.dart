@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/top_navbar.dart';
 import '../../base/no_data_page.dart';
@@ -16,6 +17,7 @@ class ShoppingPage extends StatefulWidget {
 
 class _ShoppingPage extends State<ShoppingPage> {
   late Database db;
+  FirebaseAuth auth = FirebaseAuth.instance;
   List doc = [];
   initialize() {
     db = Database();
@@ -36,7 +38,7 @@ class _ShoppingPage extends State<ShoppingPage> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: FirebaseFirestore.instance.collection('Cameras').snapshots(),
+      stream: FirebaseFirestore.instance.collection('${auth.currentUser?.uid}').snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (!snapshot.hasData) return new Text('Loading...');
         return Scaffold(

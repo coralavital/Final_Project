@@ -5,8 +5,6 @@ class Database {
   late FirebaseFirestore firestore;
   late FirebaseAuth auth;
 
-  late FieldValue increment;
-
   initialize() {
     firestore = FirebaseFirestore.instance;
     auth = FirebaseAuth.instance;
@@ -113,7 +111,7 @@ class Database {
     } else if (doc.elementAt(index)['quantity'] <= 0) {
       doc.remove(doc.elementAt(index));
       try {
-        await firestore.collection("Cameras").doc(auth.currentUser?.uid).update(
+        await firestore.collection('${auth.currentUser?.uid}').doc("Camera_1").update(
           {'shopping_list': doc},
         );
       } catch (e) {

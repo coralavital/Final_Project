@@ -32,6 +32,7 @@ class NavbarMenuItems {
         ),
         SmallText(
           text: item.text,
+          size: 15,
           color: Colors.white,
         ),
       ],

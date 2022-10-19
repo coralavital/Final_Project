@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/small_text.dart';
 import '../../widgets/top_navbar.dart';
@@ -17,6 +18,7 @@ class ListPage extends StatefulWidget {
 
 class _ListPage extends State<ListPage> {
   late Database db;
+  FirebaseAuth auth = FirebaseAuth.instance;
   List shoppingList = [];
   List doc = [];
   initialize() {
@@ -43,7 +45,9 @@ class _ListPage extends State<ListPage> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: FirebaseFirestore.instance.collection('Cameras').snapshots(),
+      stream: FirebaseFirestore.instance
+          .collection('${auth.currentUser?.uid}')
+          .snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (!snapshot.hasData) return const Text('Loading...');
         return Scaffold(
@@ -131,54 +135,57 @@ class _ListPage extends State<ListPage> {
                                                 ),
                                               ],
                                             ),
-                                            (shoppingList
-                                                    .toString()
-                                                    .contains(
-                                                        doc[index]['name']) ==
-                                                false) ?
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  TextButton(
-                                                    style: ButtonStyle(
-                                                      shape: MaterialStateProperty
-                                                          .all<
-                                                              RoundedRectangleBorder>(
-                                                        RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                (shoppingList
+                                                            .toString()
+                                                            .contains(doc[index]
+                                                                ['name']) == false)
+                                                    ? TextButton(
+                                                        style: ButtonStyle(
+                                                          shape: MaterialStateProperty
+                                                              .all<
+                                                                  RoundedRectangleBorder>(
+                                                            RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius.circular(
                                                                       Dimensions
                                                                           .size20),
+                                                            ),
+                                                          ),
+                                                          backgroundColor:
+                                                              MaterialStateProperty
+                                                                  .all<Color>(
+                                                                      AppColors
+                                                                          .mainColor),
                                                         ),
-                                                      ),
-                                                      backgroundColor:
-                                                          MaterialStateProperty
-                                                              .all<
-                                                                      Color>(
-                                                                  AppColors
-                                                                      .mainColor),
-                                                    ),
-                                                    onPressed: () {
-                                                      db.addToShoppingList(
-                                                          doc[index]['name'],
-                                                          doc[index]['image'],
-                                                          1);
-                                                    },
-                                                    child: SmallText(
-                                                      text:
-                                                          "Add To Shopping List",
-                                                      color: Colors.white,
-                                                      size: Dimensions.size10,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
-                                                  )
-                                                ],
-                                              ) : Row(mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [SmallText(text:"The product has been added to the shopping list", size: 7,)])
+                                                        onPressed: () {
+                                                          db.addToShoppingList(
+                                                              doc[index]
+                                                                  ['name'],
+                                                              doc[index]
+                                                                  ['image'],
+                                                              1);
+                                                        },
+                                                        child: SmallText(
+                                                          text:
+                                                              "Add To Shopping List",
+                                                          color: Colors.white,
+                                                          size:
+                                                              Dimensions.size10,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      )
+                                                    : SmallText(
+                                                        text:
+                                                            "The product has been added to the shopping list",
+                                                        size: 8,
+                                                      )
+                                              ],
+                                            )
                                           ],
                                         ),
                                       ))
