@@ -114,27 +114,29 @@ class _ListPage extends State<ListPage> {
                                                 ),
                                               ],
                                             ),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                SmallText(
-                                                  text: "Expired Date:",
-                                                  textAlign: TextAlign.center,
-                                                  fontWeight: FontWeight.w500,
-                                                  size: Dimensions.size10,
-                                                ),
-                                                SmallText(
-                                                  text: doc[index]
-                                                          ['expired_date']
-                                                      .toString(),
-                                                  textAlign: TextAlign.center,
-                                                  fontWeight: FontWeight.w400,
-                                                  size: Dimensions.size15,
-                                                ),
-                                              ],
-                                            ),
+                                            if (doc[index]['expired_date'] !=
+                                                null)
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  SmallText(
+                                                    text: "Expired Date:",
+                                                    textAlign: TextAlign.center,
+                                                    fontWeight: FontWeight.w500,
+                                                    size: Dimensions.size10,
+                                                  ),
+                                                  SmallText(
+                                                    text: doc[index]
+                                                            ['expired_date']
+                                                        .toString(),
+                                                    textAlign: TextAlign.center,
+                                                    fontWeight: FontWeight.w400,
+                                                    size: Dimensions.size15,
+                                                  ),
+                                                ],
+                                              ),
                                             Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
