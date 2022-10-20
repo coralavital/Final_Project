@@ -40,18 +40,18 @@ class _MainPageBodyState extends State<MainPageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        isLoaded
-            ? SizedBox(
-                height: Dimensions.size530,
-                child: PageView.builder(
-                    controller: pageController,
-                    // itemCount for two cameras
-                    itemCount: 2,
-                    itemBuilder: (context, position) {
-                      return _buildPageItem(position);
-                    }),
-              )
-            : CircularProgressIndicator(
+        //isLoaded
+        //    ? SizedBox(
+        //        height: Dimensions.size530,
+        //        child: PageView.builder(
+        //            controller: pageController,
+        //            // itemCount for two cameras
+        //            itemCount: 2,
+        //            itemBuilder: (context, position) {
+        //              return _buildPageItem(position);
+        //            }),
+        //      )
+             CircularProgressIndicator(
                 color: AppColors.mainColor,
               ),
         DotsIndicator(
@@ -99,7 +99,7 @@ class _MainPageBodyState extends State<MainPageBody> {
       child: Stack(
         children: [
           GestureDetector(
-            //child: const LiveStreamScreen(),
+            child: LiveStreamScreen(),
           ),
         ],
       ),
