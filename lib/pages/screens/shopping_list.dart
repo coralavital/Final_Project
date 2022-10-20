@@ -38,9 +38,11 @@ class _ShoppingPage extends State<ShoppingPage> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: FirebaseFirestore.instance.collection('${auth.currentUser?.uid}').snapshots(),
+      stream: FirebaseFirestore.instance
+          .collection('${auth.currentUser?.uid}')
+          .snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (!snapshot.hasData) return new Text('Loading...');
+        if (!snapshot.hasData) return const Text('Loading...');
         return Scaffold(
           body: Stack(
             children: [

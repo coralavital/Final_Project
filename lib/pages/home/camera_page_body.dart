@@ -99,7 +99,7 @@ class _MainPageBodyState extends State<MainPageBody> {
       child: Stack(
         children: [
           GestureDetector(
-            child: const LiveStreamScreen(),
+            //child: const LiveStreamScreen(),
           ),
         ],
       ),
