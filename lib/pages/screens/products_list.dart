@@ -141,8 +141,7 @@ class _ListPage extends State<ListPage> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: <Widget>[
-                                                (shoppingList
-                                                            .toString()
+                                                (shoppingList.toString()
                                                             .contains(doc[index]
                                                                 ['name']) ==
                                                         false)
@@ -186,7 +185,7 @@ class _ListPage extends State<ListPage> {
                                                       )
                                                     : SmallText(
                                                         text:
-                                                            "The product has been added to the shopping list",
+                                                            "The product has been added to the shopping cart",
                                                         size: 8,
                                                       )
                                               ],
@@ -198,7 +197,7 @@ class _ListPage extends State<ListPage> {
                                   ),
                                 );
                               })))
-                  : const NoDataPage(text: 'Your list is empty.')
+                  : const NoDataPage(text: 'Your products list is empty.')
             ],
           ),
         );

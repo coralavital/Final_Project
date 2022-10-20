@@ -10,12 +10,12 @@ class Database {
     auth = FirebaseAuth.instance;
   }
 
-  //Future<void> create(String name, String code) async {
+  //Future<void> create(String name, String image, String expired_date) async {
   //  try {
-  //    await firestore.collection("Cameras").add({
+  //    await firestore.collection('${auth.currentUser?.uid}').doc("Camera_1").add({
   //      'name': name,
-  //      'image': code,
-  //      'timestamp': FieldValue.serverTimestamp()
+  //      'image': image,
+  //      'expired_date': expired_date
   //    });
   //  } catch (e) {
   //    print(e);
@@ -24,11 +24,30 @@ class Database {
 
   //Future<void> delete(String id) async {
   //  try {
-  //    await firestore.collection("countries").doc(id).delete();
+  //    await firestore.collection('${auth.currentUser?.uid}').doc("Camera_1").delete();
   //  } catch (e) {
   //    print(e);
   //  }
   //}
+
+  Future<void> addProduct(
+      String name, String image, String expired_date) async {
+    try {
+      await firestore
+          .collection('${auth.currentUser?.uid}')
+          .doc("Camera_1")
+          .update(
+        {
+          'products': FieldValue.arrayUnion([
+            {"name": name, "image": image, "expired_date": expired_date}
+          ])
+        },
+      );
+    } catch (e) {
+      print(e);
+    }
+  }
+
 
   Future<List> readProducts() async {
     QuerySnapshot querySnapshot;
