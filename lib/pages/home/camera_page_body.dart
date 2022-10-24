@@ -3,8 +3,8 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:final_project/utils/colors.dart';
 import 'package:final_project/utils/dimensions.dart';
+import 'package:flutter_vlc_player/flutter_vlc_player.dart';
 import '../../widgets/live_stream.dart';
-import 'package:get/get.dart';
 
 // FoodPageBody class
 class MainPageBody extends StatefulWidget {
@@ -15,6 +15,7 @@ class MainPageBody extends StatefulWidget {
 }
 
 class _MainPageBodyState extends State<MainPageBody> {
+  late VlcPlayerController _videoPlayerController;
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currentPageValue = 0.0;
   final double _scaleFactor = 0.8;
@@ -28,6 +29,12 @@ class _MainPageBodyState extends State<MainPageBody> {
         _currentPageValue = pageController.page!;
       });
     });
+    _videoPlayerController = VlcPlayerController.network(
+      'http://10.0.0.20:38679/videostream.cgi?user=admin&pwd=12345678',
+      hwAcc: HwAcc.full,
+      autoPlay: true,
+      options: VlcPlayerOptions(),
+    );
   }
 
   @override
@@ -40,18 +47,18 @@ class _MainPageBodyState extends State<MainPageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        //isLoaded
-        //    ? SizedBox(
-        //        height: Dimensions.size530,
-        //        child: PageView.builder(
-        //            controller: pageController,
-        //            // itemCount for two cameras
-        //            itemCount: 2,
-        //            itemBuilder: (context, position) {
-        //              return _buildPageItem(position);
-        //            }),
-        //      )
-             CircularProgressIndicator(
+        isLoaded
+            ? SizedBox(
+                height: Dimensions.size530,
+                child: PageView.builder(
+                    controller: pageController,
+                    // itemCount for two cameras
+                    itemCount: 2,
+                    itemBuilder: (context, position) {
+                      return _buildPageItem(position);
+                    }),
+              )
+            : CircularProgressIndicator(
                 color: AppColors.mainColor,
               ),
         DotsIndicator(
@@ -99,7 +106,8 @@ class _MainPageBodyState extends State<MainPageBody> {
       child: Stack(
         children: [
           GestureDetector(
-            child: LiveStreamScreen(),
+            child:
+                LiveStreamScreen(videoPlayerController: _videoPlayerController),
           ),
         ],
       ),

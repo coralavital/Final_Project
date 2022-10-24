@@ -126,7 +126,7 @@ class _ShoppingPage extends State<ShoppingPage> {
                                                     children: [
                                                       GestureDetector(
                                                         onTap: () {
-                                                          db.removeItem(
+                                                          db.removeItemToProduct(
                                                               doc, index);
                                                         },
                                                         child: Icon(
@@ -149,7 +149,7 @@ class _ShoppingPage extends State<ShoppingPage> {
                                                       ),
                                                       GestureDetector(
                                                         onTap: () {
-                                                          db.addItem(
+                                                          db.addItemToProduct(
                                                               doc, index);
                                                         },
                                                         child: Icon(

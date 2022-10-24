@@ -88,7 +88,7 @@ class Database {
     }
   }
 
-  Future<void> addItem(List doc, int index) async {
+  Future<void> addItemToProduct(List doc, int index) async {
     doc.elementAt(index)['quantity'] += 1;
     try {
       await firestore
@@ -102,7 +102,7 @@ class Database {
     }
   }
 
-  Future<void> removeItem(List doc, int index) async {
+  Future<void> removeItemToProduct(List doc, int index) async {
     doc.elementAt(index)['quantity'] -= 1;
     if (doc.elementAt(index)['quantity'] > 0) {
       try {
