@@ -48,6 +48,7 @@ dependencies:
   flutterfire_ui: ^0.4.3+14
   google_sign_in: ^5.4.2
   flutter_vlc_player: ^7.1.5
+  firebase_remote_config: ^2.0.20
 
 dev_dependencies:
   flutter_test:

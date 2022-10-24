@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
-
+import '../../widgets/custom_profile_screen.dart';
 import '../../widgets/top_navbar.dart';
 
 class Account extends StatelessWidget {
@@ -10,15 +10,13 @@ class Account extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        ProfileScreen(
+        CustomProfileScreen(
           actions: [
             SignedOutAction((context) {
               Navigator.of(context).pushNamed('/auth');
             })
           ],
-         
         ),
-        
         TopNavbar(
           icon: const Icon(
             Icons.list_rounded,
