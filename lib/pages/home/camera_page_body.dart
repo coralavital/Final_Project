@@ -30,7 +30,7 @@ class _MainPageBodyState extends State<MainPageBody> {
       });
     });
     _videoPlayerController = VlcPlayerController.network(
-      'http://10.0.0.20:38679/videostream.cgi?user=admin&pwd=12345678',
+      'http://10.0.0.20:35552/videostream.cgi?user=admin&pwd=12345678',
       hwAcc: HwAcc.full,
       autoPlay: true,
       options: VlcPlayerOptions(),

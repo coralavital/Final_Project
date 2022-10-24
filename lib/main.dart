@@ -5,6 +5,7 @@ import 'package:final_project/routes/route_helper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'firebase_options.dart';
 
 // main function
 Future<void> main() async {
@@ -14,7 +15,9 @@ Future<void> main() async {
 
 // MyApp class
 class MyApp extends StatelessWidget {
-  final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
+  final Future<FirebaseApp> _fbApp = Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
