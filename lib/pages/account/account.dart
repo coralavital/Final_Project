@@ -10,7 +10,7 @@ class Account extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        CustomProfileScreen(
+        ProfileScreen(
           actions: [
             SignedOutAction((context) {
               Navigator.of(context).pushNamed('/auth');

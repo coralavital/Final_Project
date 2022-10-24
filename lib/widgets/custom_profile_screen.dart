@@ -6,13 +6,13 @@ import 'package:flutter/material.dart' hide Title;
 import 'package:flutterfire_ui/auth.dart';
 import 'package:flutterfire_ui/src/auth/widgets/internal/loading_button.dart';
 
-import 'package:flutterfire_ui/src/auth//widgets/internal/universal_button.dart';
+import 'package:flutterfire_ui/src/auth/widgets/internal/universal_button.dart';
+import 'package:flutterfire_ui/src/auth/widgets/internal/universal_icon_button.dart';
 
 import 'package:flutterfire_ui/src/auth/screens/internal/multi_provider_screen.dart';
 
 import 'package:flutterfire_ui/src/auth/widgets/internal/rebuild_scope.dart';
 import 'package:flutterfire_ui/src/auth/widgets/internal/subtitle.dart';
-import 'package:flutterfire_ui/src/auth//widgets/internal/universal_icon_button.dart';
 
 class AvailableProvidersRow extends StatefulWidget {
   final FirebaseAuth? auth;
