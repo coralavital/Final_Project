@@ -1,10 +1,10 @@
 // imports
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:final_project/cnn/cnn_model.dart';
 import 'package:flutter/material.dart';
 import 'package:final_project/utils/colors.dart';
 import 'package:final_project/utils/dimensions.dart';
 import 'package:flutter_vlc_player/flutter_vlc_player.dart';
-import '../../widgets/live_stream.dart';
 
 // FoodPageBody class
 class MainPageBody extends StatefulWidget {
@@ -106,8 +106,7 @@ class _MainPageBodyState extends State<MainPageBody> {
       child: Stack(
         children: [
           GestureDetector(
-            child:
-                LiveStreamScreen(videoPlayerController: _videoPlayerController),
+            child: Cameras(),
           ),
         ],
       ),

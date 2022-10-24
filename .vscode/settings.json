@@ -5,6 +5,7 @@
 		"flutterfire",
 		"Getx",
 		"poduct",
+		"tflite",
 		"vsync"
 	]
 }

@@ -11,7 +11,7 @@ class Database {
   }
 
   Future<void> addProduct(
-      String name, String image, String expired_date) async {
+      String name, String image, String expiredDate) async {
     try {
       await firestore
           .collection('${auth.currentUser?.uid}')
@@ -19,7 +19,7 @@ class Database {
           .update(
         {
           'products': FieldValue.arrayUnion([
-            {"name": name, "image": image, "expired_date": expired_date}
+            {"name": name, "image": image, "expired_date": expiredDate}
           ])
         },
       );
