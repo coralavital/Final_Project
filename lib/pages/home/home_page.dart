@@ -1,6 +1,5 @@
 // imports
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'package:final_project/cnn/cnn_model.dart';
 import 'package:final_project/pages/screens/shopping_list.dart';
 import 'package:final_project/widgets/small_text.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +10,7 @@ import '../account/account.dart';
 
 // HomePage class
 class HomePage extends StatefulWidget {
-  HomePage({
+  const HomePage({
     Key? key,
   }) : super(key: key);
 

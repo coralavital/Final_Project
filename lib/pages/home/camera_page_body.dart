@@ -1,4 +1,5 @@
 // imports
+
 import 'package:camera_camera/camera_camera.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
@@ -6,24 +7,23 @@ import 'package:final_project/utils/colors.dart';
 import 'package:final_project/utils/dimensions.dart';
 
 // FoodPageBody class
-class MainPageBody extends StatefulWidget {
-  const MainPageBody({Key? key}) : super(key: key);
+class CameraPage extends StatefulWidget {
+  const CameraPage({Key? key}) : super(key: key);
 
   @override
-  State<MainPageBody> createState() => _MainPageBodyState();
+  State<CameraPage> createState() => _CameraPage();
 }
 
-class _MainPageBodyState extends State<MainPageBody>
-    with WidgetsBindingObserver {
+class _CameraPage extends State<CameraPage> with WidgetsBindingObserver {
   late CameraController _controller;
   late Future<void> _initController;
   var isCameraReady = false;
   late XFile imageFile;
-  PageController pageController = PageController(viewportFraction: 0.85);
+  PageController pageController = PageController(viewportFraction: 0.89);
   var _currentPageValue = 0.0;
   final double _scaleFactor = 0.8;
   final double _height = Dimensions.size260;
-  var isLoaded = true;
+
   @override
   void initState() {
     super.initState();
@@ -38,6 +38,7 @@ class _MainPageBodyState extends State<MainPageBody>
 
   @override
   void dispose() {
+    isCameraReady = false;
     WidgetsBinding.instance.removeObserver(this);
     _controller.dispose();
     pageController.dispose();
@@ -49,7 +50,16 @@ class _MainPageBodyState extends State<MainPageBody>
     final size = MediaQuery.of(context).size;
     var scale = size.aspectRatio * camera.aspectRatio;
     if (scale < 1) scale = 1;
-    return Transform.scale(scale: scale, child: CameraPreview(_controller));
+    return Transform.scale(
+        scale: scale,
+        child: ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(15),
+              topRight: Radius.circular(15),
+              bottomRight: Radius.circular(15),
+              bottomLeft: Radius.circular(15),
+            ),
+            child: CameraPreview(_controller)));
   }
 
   Future<void> initCamera() async {
@@ -69,9 +79,9 @@ class _MainPageBodyState extends State<MainPageBody>
   Widget build(BuildContext context) {
     return Column(
       children: [
-        isLoaded
+        isCameraReady
             ? SizedBox(
-                height: Dimensions.size530,
+                height: Dimensions.size500,
                 child: PageView.builder(
                     controller: pageController,
                     // itemCount for two cameras
@@ -88,8 +98,8 @@ class _MainPageBodyState extends State<MainPageBody>
           position: _currentPageValue,
           decorator: DotsDecorator(
             activeColor: AppColors.paraColor,
-            size: Size.square(Dimensions.size10),
-            activeSize: const Size(18.0, 9.0),
+            size: Size.square(Dimensions.size5),
+            activeSize: const Size(18.0, 10.0),
             activeShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(Dimensions.size5)),
           ),

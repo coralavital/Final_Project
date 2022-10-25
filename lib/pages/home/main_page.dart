@@ -1,4 +1,5 @@
 // imports
+import 'package:final_project/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:final_project/widgets/top_navbar.dart';
@@ -24,8 +25,9 @@ class _MainPageState extends State<MainPage> {
           TopNavbar(
             icon: const Icon(Icons.list_rounded),
           ),
+          SizedBox(height: Dimensions.size20,),
           const Expanded(
-            child: SingleChildScrollView(child: MainPageBody()),
+            child: SingleChildScrollView(child: CameraPage()),
           ),
         ],
       ),
