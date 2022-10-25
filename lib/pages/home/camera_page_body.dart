@@ -1,10 +1,9 @@
 // imports
+import 'package:camera_camera/camera_camera.dart';
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:final_project/cnn/cnn_model.dart';
 import 'package:flutter/material.dart';
 import 'package:final_project/utils/colors.dart';
 import 'package:final_project/utils/dimensions.dart';
-import 'package:flutter_vlc_player/flutter_vlc_player.dart';
 
 // FoodPageBody class
 class MainPageBody extends StatefulWidget {
@@ -14,8 +13,12 @@ class MainPageBody extends StatefulWidget {
   State<MainPageBody> createState() => _MainPageBodyState();
 }
 
-class _MainPageBodyState extends State<MainPageBody> {
-  late VlcPlayerController _videoPlayerController;
+class _MainPageBodyState extends State<MainPageBody>
+    with WidgetsBindingObserver {
+  late CameraController _controller;
+  late Future<void> _initController;
+  var isCameraReady = false;
+  late XFile imageFile;
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currentPageValue = 0.0;
   final double _scaleFactor = 0.8;
@@ -24,23 +27,42 @@ class _MainPageBodyState extends State<MainPageBody> {
   @override
   void initState() {
     super.initState();
+    initCamera();
+    WidgetsBinding.instance.addObserver(this);
     pageController.addListener(() {
       setState(() {
         _currentPageValue = pageController.page!;
       });
     });
-    _videoPlayerController = VlcPlayerController.network(
-      'http://10.0.0.20:35552/videostream.cgi?user=admin&pwd=12345678',
-      hwAcc: HwAcc.full,
-      autoPlay: true,
-      options: VlcPlayerOptions(),
-    );
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _controller.dispose();
     pageController.dispose();
     super.dispose();
+  }
+
+  Widget cameraWidget(context) {
+    var camera = _controller.value;
+    final size = MediaQuery.of(context).size;
+    var scale = size.aspectRatio * camera.aspectRatio;
+    if (scale < 1) scale = 1;
+    return Transform.scale(scale: scale, child: CameraPreview(_controller));
+  }
+
+  Future<void> initCamera() async {
+    final cameras = await availableCameras();
+    final firstCamera = cameras.first;
+    _controller = CameraController(firstCamera, ResolutionPreset.high);
+    _initController = _controller.initialize();
+    if (!mounted) {
+      return;
+    }
+    setState(() {
+      isCameraReady = true;
+    });
   }
 
   @override
@@ -102,14 +124,68 @@ class _MainPageBodyState extends State<MainPageBody> {
         ..setTranslationRaw(0, _height * (1 - _scaleFactor) / 2, 0);
     }
     return Transform(
-      transform: matrix,
-      child: Stack(
-        children: [
-          GestureDetector(
-            child: Cameras(),
-          ),
-        ],
-      ),
-    );
+        transform: matrix,
+        child: Stack(children: [
+          FutureBuilder(
+            future: _initController,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return Stack(
+                  children: [
+                    cameraWidget(context),
+                    //Align(
+                    //    alignment: Alignment.bottomCenter,
+                    //    child: Container(
+                    //        color: AppColors.iconColor2,
+                    //        child: Row(
+                    //          mainAxisAlignment: MainAxisAlignment.center,
+                    //          mainAxisSize: MainAxisSize.max,
+                    //          children: [
+                    //            IconButton(
+                    //                iconSize: 40,
+                    //                onPressed: () => {}, icon: null,)
+                    //                //captureImage(context),
+                    //                //icon: Icon(Icons.camera_alt))
+                    //          ],
+                    //        )))
+                  ],
+                );
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+          )
+        ]));
   }
+
+  //captureImage(BuildContext context) {
+  //  _controller.takePicture().then((file) {
+  //    setState(() {
+  //      imageFile = file;
+  //    });
+  //    if (mounted) {
+  //      Navigator.push(
+  //          context,
+  //          MaterialPageRoute(
+  //              builder: (context) => DisplayPictureScreen(image: imageFile)));
+  //    }
+  //  });
+  //}
 }
+
+//class DisplayPictureScreen extends StatelessWidget {
+//  final XFile image;
+//  const DisplayPictureScreen({Key? key, required this.image}) : super(key: key);
+
+//  Widget build(BuildContext context) {
+//    return Scaffold(
+//      appBar: AppBar(),
+//      body: Container(
+//          width: double.infinity,
+//          height: double.infinity,
+//          child: Image.file(File(image.path), fit: BoxFit.fill)),
+//    );
+//  }
+//}
