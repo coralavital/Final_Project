@@ -2,9 +2,13 @@
 
 import 'package:camera_camera/camera_camera.dart';
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:final_project/realtime/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:final_project/utils/colors.dart';
 import 'package:final_project/utils/dimensions.dart';
+import 'package:tflite/tflite.dart';
+import 'dart:math' as math;
+import '../../realtime/bounding_box.dart';
 
 // FoodPageBody class
 class CameraPage extends StatefulWidget {
@@ -15,19 +19,65 @@ class CameraPage extends StatefulWidget {
 }
 
 class _CameraPage extends State<CameraPage> with WidgetsBindingObserver {
-  late CameraController _controller;
-  late Future<void> _initController;
+  //late CameraController _controller;
+  //late final camerasList;
+  //late Future<void> _initController;
   var isCameraReady = false;
-  late XFile imageFile;
-  PageController pageController = PageController(viewportFraction: 0.89);
+  //late XFile imageFile;
+
+  bool isWorking = false;
+  List<dynamic> _currentRecognition = [];
+
+  late CameraController cameraController;
+  late CameraImage imgCamera;
+  //loadModel() async {
+  //  await Tflite.loadModel(
+  //      model: "assets/model_unquant.tflite", labels: "assets/labels.txt");
+  //}
+
+  initCamera() async {
+    final cameras = await availableCameras();
+    final firstcamera = cameras.first;
+    cameraController = CameraController(cameras[0], ResolutionPreset.high);
+    cameraController.initialize().then((value) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        isCameraReady = true;
+        cameraController.startImageStream((imageFromStream) => {
+              if (!isWorking)
+                {
+                  isWorking = true,
+                  imgCamera = imageFromStream,
+                  runModelOnStreamFrames(),
+                }
+            });
+      });
+    });
+  }
+
+  loadTfModel() async {
+    await Tflite.loadModel(
+      model: "assets/ssd_mobilenet.tflite",
+      labels: "assets/labels.txt",
+    );
+  }
+
+  PageController pageController = PageController(viewportFraction: 0.92);
   var _currentPageValue = 0.0;
   final double _scaleFactor = 0.8;
   final double _height = Dimensions.size260;
+
+  List<dynamic> _recognitions = List.empty();
+  int _imageHeight = 0;
+  int _imageWidth = 0;
 
   @override
   void initState() {
     super.initState();
     initCamera();
+    loadTfModel();
     WidgetsBinding.instance.addObserver(this);
     pageController.addListener(() {
       setState(() {
@@ -38,15 +88,15 @@ class _CameraPage extends State<CameraPage> with WidgetsBindingObserver {
 
   @override
   void dispose() {
+    super.dispose();
     isCameraReady = false;
     WidgetsBinding.instance.removeObserver(this);
-    _controller.dispose();
+    cameraController.dispose();
     pageController.dispose();
-    super.dispose();
   }
 
   Widget cameraWidget(context) {
-    var camera = _controller.value;
+    var camera = cameraController.value;
     final size = MediaQuery.of(context).size;
     var scale = size.aspectRatio * camera.aspectRatio;
     if (scale < 1) scale = 1;
@@ -59,20 +109,28 @@ class _CameraPage extends State<CameraPage> with WidgetsBindingObserver {
               bottomRight: Radius.circular(15),
               bottomLeft: Radius.circular(15),
             ),
-            child: CameraPreview(_controller)));
+            child: CameraPreview(cameraController)));
   }
 
-  Future<void> initCamera() async {
-    final cameras = await availableCameras();
-    final firstCamera = cameras.first;
-    _controller = CameraController(firstCamera, ResolutionPreset.high);
-    _initController = _controller.initialize();
-    if (!mounted) {
-      return;
+  runModelOnStreamFrames() async {
+    if (imgCamera != null) {
+      var recognitions = await Tflite.detectObjectOnFrame(
+        bytesList: imgCamera.planes.map((plane) {
+          return plane.bytes;
+        }).toList(),
+        model: "SSDMobileNet",
+        imageHeight: imgCamera.height,
+        imageWidth: imgCamera.width,
+        imageMean: 127.5,
+        imageStd: 127.5,
+        numResultsPerClass: 1,
+        threshold: 0.4,
+      ).then((recognitions) {
+        setRecognitions(recognitions, imgCamera.height, imgCamera.width);
+      });
+
+      isWorking = false;
     }
-    setState(() {
-      isCameraReady = true;
-    });
   }
 
   @override
@@ -81,7 +139,7 @@ class _CameraPage extends State<CameraPage> with WidgetsBindingObserver {
       children: [
         isCameraReady
             ? SizedBox(
-                height: Dimensions.size500,
+                height: Dimensions.size510,
                 child: PageView.builder(
                     controller: pageController,
                     // itemCount for two cameras
@@ -90,15 +148,15 @@ class _CameraPage extends State<CameraPage> with WidgetsBindingObserver {
                       return _buildPageItem(position);
                     }),
               )
-            : CircularProgressIndicator(
+            : Container(height: Dimensions.size510, alignment: Alignment.center ,child: CircularProgressIndicator(
                 color: AppColors.mainColor,
-              ),
+              ),),
         DotsIndicator(
           dotsCount: 2,
           position: _currentPageValue,
           decorator: DotsDecorator(
             activeColor: AppColors.paraColor,
-            size: Size.square(Dimensions.size5),
+            size: Size.square(Dimensions.size7),
             activeSize: const Size(18.0, 10.0),
             activeShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(Dimensions.size5)),
@@ -108,7 +166,16 @@ class _CameraPage extends State<CameraPage> with WidgetsBindingObserver {
     );
   }
 
+  setRecognitions(recognitions, imageHeight, imageWidth) {
+    setState(() {
+      _recognitions = recognitions;
+      _imageHeight = imageHeight;
+      _imageWidth = imageWidth;
+    });
+  }
+
   Widget _buildPageItem(int index) {
+    Size screen = MediaQuery.of(context).size;
     Matrix4 matrix = Matrix4.identity();
     if (index == _currentPageValue.floor()) {
       var currScale = 1 - (_currentPageValue - index) * (1 - _scaleFactor);
@@ -135,67 +202,15 @@ class _CameraPage extends State<CameraPage> with WidgetsBindingObserver {
     }
     return Transform(
         transform: matrix,
-        child: Stack(children: [
-          FutureBuilder(
-            future: _initController,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                return Stack(
-                  children: [
-                    cameraWidget(context),
-                    //Align(
-                    //    alignment: Alignment.bottomCenter,
-                    //    child: Container(
-                    //        color: AppColors.iconColor2,
-                    //        child: Row(
-                    //          mainAxisAlignment: MainAxisAlignment.center,
-                    //          mainAxisSize: MainAxisSize.max,
-                    //          children: [
-                    //            IconButton(
-                    //                iconSize: 40,
-                    //                onPressed: () => {}, icon: null,)
-                    //                //captureImage(context),
-                    //                //icon: Icon(Icons.camera_alt))
-                    //          ],
-                    //        )))
-                  ],
-                );
-              } else {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            },
-          )
+        child: Stack(children: <Widget>[
+          cameraWidget(context),
+          BoundingBox(
+            _recognitions,
+            math.max(_imageHeight, _imageWidth),
+            math.min(_imageHeight, _imageWidth),
+            screen.height*0.80,
+            screen.width*0.80,
+          ),
         ]));
   }
-
-  //captureImage(BuildContext context) {
-  //  _controller.takePicture().then((file) {
-  //    setState(() {
-  //      imageFile = file;
-  //    });
-  //    if (mounted) {
-  //      Navigator.push(
-  //          context,
-  //          MaterialPageRoute(
-  //              builder: (context) => DisplayPictureScreen(image: imageFile)));
-  //    }
-  //  });
-  //}
 }
-
-//class DisplayPictureScreen extends StatelessWidget {
-//  final XFile image;
-//  const DisplayPictureScreen({Key? key, required this.image}) : super(key: key);
-
-//  Widget build(BuildContext context) {
-//    return Scaffold(
-//      appBar: AppBar(),
-//      body: Container(
-//          width: double.infinity,
-//          height: double.infinity,
-//          child: Image.file(File(image.path), fit: BoxFit.fill)),
-//    );
-//  }
-//}
