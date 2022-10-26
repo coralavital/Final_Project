@@ -49,7 +49,15 @@ class _ListPage extends State<ListPage> {
           .collection('${auth.currentUser?.uid}')
           .snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (!snapshot.hasData) return const Text('Loading...');
+        if (!snapshot.hasData) {
+          return Container(
+                height: Dimensions.size510,
+                alignment: Alignment.center,
+                child: CircularProgressIndicator(
+                  color: AppColors.mainColor,
+                ),
+              );
+        }
         return Scaffold(
           body: Stack(
             children: [

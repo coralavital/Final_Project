@@ -19,21 +19,11 @@ class CameraPage extends StatefulWidget {
 }
 
 class _CameraPage extends State<CameraPage> with WidgetsBindingObserver {
-  //late CameraController _controller;
-  //late final camerasList;
-  //late Future<void> _initController;
-  var isCameraReady = false;
-  //late XFile imageFile;
-
+  bool isCameraReady = false;
   bool isWorking = false;
-  List<dynamic> _currentRecognition = [];
 
   late CameraController cameraController;
   late CameraImage imgCamera;
-  //loadModel() async {
-  //  await Tflite.loadModel(
-  //      model: "assets/model_unquant.tflite", labels: "assets/labels.txt");
-  //}
 
   initCamera() async {
     final cameras = await availableCameras();
@@ -141,16 +131,21 @@ class _CameraPage extends State<CameraPage> with WidgetsBindingObserver {
             ? SizedBox(
                 height: Dimensions.size510,
                 child: PageView.builder(
-                    controller: pageController,
-                    // itemCount for two cameras
-                    itemCount: 2,
-                    itemBuilder: (context, position) {
-                      return _buildPageItem(position);
-                    }),
+                  controller: pageController,
+                  // itemCount for two cameras
+                  itemCount: 2,
+                  itemBuilder: (context, position) {
+                    return _buildPageItem(position);
+                  },
+                ),
               )
-            : Container(height: Dimensions.size510, alignment: Alignment.center ,child: CircularProgressIndicator(
-                color: AppColors.mainColor,
-              ),),
+            : Container(
+                height: Dimensions.size510,
+                alignment: Alignment.center,
+                child: CircularProgressIndicator(
+                  color: AppColors.mainColor,
+                ),
+              ),
         DotsIndicator(
           dotsCount: 2,
           position: _currentPageValue,
@@ -208,8 +203,8 @@ class _CameraPage extends State<CameraPage> with WidgetsBindingObserver {
             _recognitions,
             math.max(_imageHeight, _imageWidth),
             math.min(_imageHeight, _imageWidth),
-            screen.height*0.80,
-            screen.width*0.80,
+            screen.height * 0.80,
+            screen.width * 0.80,
           ),
         ]));
   }
