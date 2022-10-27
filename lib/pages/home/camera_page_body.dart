@@ -196,8 +196,9 @@ class _CameraPage extends State<CameraPage> with WidgetsBindingObserver {
         ..setTranslationRaw(0, _height * (1 - _scaleFactor) / 2, 0);
     }
     return Transform(
-        transform: matrix,
-        child: Stack(children: <Widget>[
+      transform: matrix,
+      child: Stack(
+        children: <Widget>[
           cameraWidget(context),
           BoundingBox(
             _recognitions,
@@ -206,6 +207,8 @@ class _CameraPage extends State<CameraPage> with WidgetsBindingObserver {
             screen.height * 0.80,
             screen.width * 0.80,
           ),
-        ]));
+        ],
+      ),
+    );
   }
 }
