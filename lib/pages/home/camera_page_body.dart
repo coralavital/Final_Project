@@ -3,12 +3,16 @@
 import 'package:camera_camera/camera_camera.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:final_project/realtime/camera.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:final_project/utils/colors.dart';
 import 'package:final_project/utils/dimensions.dart';
 import 'package:tflite/tflite.dart';
 import 'dart:math' as math;
+import '../../services/firebase_firestore_service.dart';
 import '../../realtime/bounding_box.dart';
+import '../../services/firebase_storage_service.dart';
 
 // FoodPageBody class
 class CameraPage extends StatefulWidget {
@@ -19,9 +23,10 @@ class CameraPage extends StatefulWidget {
 }
 
 class _CameraPage extends State<CameraPage> with WidgetsBindingObserver {
+  FirebaseAuth auth = FirebaseAuth.instance;
+
   bool isCameraReady = false;
   bool isWorking = false;
-
   late CameraController cameraController;
   late CameraImage imgCamera;
 
@@ -40,7 +45,7 @@ class _CameraPage extends State<CameraPage> with WidgetsBindingObserver {
                 {
                   isWorking = true,
                   imgCamera = imageFromStream,
-                  runModelOnStreamFrames(),
+                  //runModelOnStreamFrames(),
                 }
             });
       });
@@ -199,14 +204,17 @@ class _CameraPage extends State<CameraPage> with WidgetsBindingObserver {
       transform: matrix,
       child: Stack(
         children: <Widget>[
-          cameraWidget(context),
-          BoundingBox(
-            _recognitions,
-            math.max(_imageHeight, _imageWidth),
-            math.min(_imageHeight, _imageWidth),
-            screen.height * 0.80,
-            screen.width * 0.80,
+          Image.network(
+            FirebaseStorageService().getImage("Camera1").toString(),
           ),
+          //cameraWidget(context),
+          //BoundingBox(
+          //  _recognitions,
+          //  math.max(_imageHeight, _imageWidth),
+          //  math.min(_imageHeight, _imageWidth),
+          //  screen.height * 0.80,
+          //  screen.width * 0.80,
+          //),
         ],
       ),
     );

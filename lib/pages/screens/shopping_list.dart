@@ -5,7 +5,7 @@ import '../../widgets/top_navbar.dart';
 import '../../base/no_data_page.dart';
 import '../../utils/dimensions.dart';
 import '../../widgets/big_text.dart';
-import '../../data/firebase.dart';
+import '../../services/firebase_firestore_service.dart';
 import '../../utils/colors.dart';
 
 class ShoppingPage extends StatefulWidget {
@@ -16,11 +16,11 @@ class ShoppingPage extends StatefulWidget {
 }
 
 class _ShoppingPage extends State<ShoppingPage> {
-  late Database db;
+  late FirebaseFirestoreService db;
   FirebaseAuth auth = FirebaseAuth.instance;
   List doc = [];
   initialize() {
-    db = Database();
+    db = FirebaseFirestoreService();
     db.initialize();
     db.readShoppingList().then((value) => {
           setState(() {

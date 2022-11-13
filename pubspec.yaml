@@ -54,10 +54,10 @@ dependencies:
   tflite: ^1.1.2
   image_picker: ^0.8.4+11
   flutter_launcher_icons: ^0.10.0
-  flutter_barcode_scanner: ^2.0.0
   camera: any
   path_provider: any
   camera_camera: any
+  firebase_storage: ^10.3.11
 
 
 

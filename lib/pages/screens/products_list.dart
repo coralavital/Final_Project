@@ -6,7 +6,7 @@ import '../../widgets/top_navbar.dart';
 import '../../base/no_data_page.dart';
 import '../../utils/dimensions.dart';
 import '../../widgets/big_text.dart';
-import '../../data/firebase.dart';
+import '../../services/firebase_firestore_service.dart';
 import '../../utils/colors.dart';
 
 class ListPage extends StatefulWidget {
@@ -17,21 +17,21 @@ class ListPage extends StatefulWidget {
 }
 
 class _ListPage extends State<ListPage> {
-  late Database db;
-  FirebaseAuth auth = FirebaseAuth.instance;
+  late FirebaseFirestoreService db;
+  late FirebaseAuth auth = FirebaseAuth.instance;
   List shoppingList = [];
   List doc = [];
   initialize() {
-    db = Database();
+    db = FirebaseFirestoreService();
     db.initialize();
-    db.readProducts().then((value) => {
-          setState(() {
-            doc = value;
-          }),
-        });
     db.readShoppingList().then((value) => {
           setState(() {
             shoppingList = value;
+          }),
+        });
+    db.readProducts().then((value) => {
+          setState(() {
+            doc = value;
           }),
         });
   }
@@ -51,12 +51,12 @@ class _ListPage extends State<ListPage> {
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (!snapshot.hasData) {
           return Container(
-                height: Dimensions.size510,
-                alignment: Alignment.center,
-                child: CircularProgressIndicator(
-                  color: AppColors.mainColor,
-                ),
-              );
+            height: Dimensions.size510,
+            alignment: Alignment.center,
+            child: CircularProgressIndicator(
+              color: AppColors.mainColor,
+            ),
+          );
         }
         return Scaffold(
           body: Stack(
@@ -149,7 +149,8 @@ class _ListPage extends State<ListPage> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: <Widget>[
-                                                (shoppingList.toString()
+                                                (shoppingList
+                                                            .toString()
                                                             .contains(doc[index]
                                                                 ['name']) ==
                                                         false)
